@@ -1,0 +1,60 @@
+comments <!-- -->
+
+strong	Visibly changes the wrapped text to be bold. Text will have a stronger importance than the surrounding text. Example: You must remember to turn the light off.
+
+em	Visibly changes the wrapped text to be italicized. Demonstrates what part of the sentence is to receive emphasis. Example: What are you doing here?
+
+b	Visibly changes the wrapped text to be bold. Does not affect the meaning of the content as the strong element does.
+
+i	Visibly changes the wrapped text to be italicized. Does not affect the meaning of the content as the em element does.
+
+sub	Adjusts the position of the text to be lower than the text around it. Short for subscript. Example: Carbon dioxide has a chemical formula of CO2
+
+sup	Adjusts the position of the text to be higher than the text around it. Short for superscript. Example: Multiply your result by 103
+
+descendent selector article p {}
+child selector: article > p {}
+sibling selector: article ~ p {}
+adjacent sibling (directly following only) h2 + p {}
+attribute selector a[target] {}
+	can use * to find parts of selectors ie: a[href*="login"] {}
+	begins with: a[href^="https://"]
+	ends with: a[href$=".pdf"]
+
+pseudo classes
+	a:link
+	a:visited
+	:hover 
+	:active (clicking)
+	:focus (tabbing)
+	:enabled
+	:disabled
+	:checked (checkbox, radio buttons)
+	:indeterminate (checkboxes etc)
+	:first-child
+	:last-child
+	:only-child
+	:first-of-type (also last and only)\
+	:nth-child(n) (last, type of, last type of)
+		can use multiples of n ie 3n
+			odd, even
+
+	:target   (need to learn these)
+	:empty
+	:not()
+
+pseudo elements
+
+	.alpha:first-letter 	Selects the first letter of text within an element
+	.bravo:first-line	Selects the first line of text within an element
+	div:before	  Creates a pseudo-element inside the selected element at the beginning
+	a:after		Creates a pseudo-element inside the selected element at the end
+	::selection	Selects the part of a document which has been selected, or highlighted, by a users actions
+
+
+
+
+
+
+
+

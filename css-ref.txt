@@ -1,0 +1,42 @@
+clearfix (or group) example: 
+
+	<header>...</header>
+	<div class="group">
+		<section>...</section>
+		<aside>...</aside>
+	</div>
+	<footer>...</footer>
+
+group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+section {
+  float: left;
+  margin: 0 1.5%;
+  width: 63%;
+}
+aside {
+  float: right;
+  margin: 0 1.5%;
+  width: 30%;
+}
+
+centering text (ex in a button, set height and line height =)
+.btn {
+  height: 22px;
+  line-height: 22px;
+}
+
+
+
+
+ backround shorthand : background-color, background-image, background-position, and then background-repeat.
