@@ -1,0 +1,49 @@
+body {
+	background-image: url("../images/bg_body.gif");
+	text-align: center;
+	font: normal 20px Helvetica, Arial, sans-serif;
+	color: #45494d;
+	padding: 75px 0 50px 0;
+}
+
+header, main, footer {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+header {
+	padding-bottom: 50px;
+}
+
+main {
+	background-color: #ffffff;
+	padding-top: 75px
+}
+
+article {
+	padding: 0 110px 100px 110px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	color: #3e98b2;
+	font-size: 24px;
+}
+
+footer {
+	background: #e7e7e7;
+	padding: 30px 0;
+}
+
+ul {
+	margin: 0;
+}
+
+li {
+	display: inline;
+	padding: 0 62px 0 62px;
+
+}
