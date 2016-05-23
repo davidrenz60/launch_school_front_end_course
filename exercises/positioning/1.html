@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+  </head>
+  <style>
+    #positioned {
+      position: absolute;
+      top: 10;
+      left: 50%;
+      background: #50FF3C;
+      padding: 30px 15px;
+      width: 400px;
+      box-sizing: border-box;
+      margin-left: -200px;
+      z-index: 2;
+    }
+    #fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .6);
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+    #positioned span {
+      width: 20px;
+      height: 20px;
+      background: #fcfc99;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+    }
+  </style>
+  <body>
+    <div id="fixed"></div>
+    <div id="positioned">
+      <span></span>
+      I'm positioned
+    </div>
+
+    <section>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur quam dolor, vel elementum nisl sollicitudin vel. Suspendisse rhoncus tellus ac arcu feugiat sagittis. Aliquam vel neque id massa molestie iaculis vitae vel orci. Pellentesque tristique vehicula lorem, non imperdiet tortor imperdiet nec. Vestibulum vestibulum iaculis tortor, aliquet euismod elit accumsan ac. Curabitur sit amet diam nunc. Curabitur ut ornare nisi. Fusce in tortor a libero dignissim vehicula non eu arcu. Proin interdum condimentum nulla, eleifend tempor neque suscipit vel. Quisque consequat nisl vel elementum maximus.</p>
+      <p>Pellentesque hendrerit nisl eu vehicula gravida. Aenean ornare eget massa vel bibendum. Aenean eu tincidunt tellus. Nullam a nulla interdum, rhoncus est non, tempor turpis. Morbi sollicitudin vulputate mollis. Cras ultricies volutpat turpis, a luctus lectus consectetur ac. Curabitur ac ipsum eu enim cursus efficitur. Quisque malesuada dui sed condimentum pharetra. Cras lacinia in ex id tempus. Sed dictum bibendum tellus. Integer tincidunt at metus sit amet pretium. Maecenas ultricies aliquam erat. Sed vel orci vel nisi semper interdum. Ut elementum elit a nunc rutrum ornare. Nunc tellus leo, fermentum ut dui id, malesuada accumsan justo. Donec vitae metus et orci faucibus maximus mollis ac urna.</p>
+      <p>Phasellus eu ornare mi. Quisque blandit lectus congue risus venenatis gravida. Proin at magna consectetur, tincidunt turpis eu, ultricies nulla. Ut pellentesque lacus quam, sit amet viverra ex volutpat ut. Mauris at varius nulla. Mauris ut ex posuere, interdum odio sit amet, congue odio. Proin pellentesque justo nec augue consectetur, in rhoncus magna porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare turpis id tincidunt lobortis.</p>
+    </section>
+  </body>
+
+</html>
