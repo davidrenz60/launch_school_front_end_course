@@ -1,0 +1,282 @@
+main {
+	width: 1000px;
+	margin: 0 auto;
+	border: solid 2px #999;
+	padding: 20px;
+	font: normal 16px Helvetica, Arial sans-serif;
+	color: #545459;
+}
+
+main * {
+	box-sizing: border-box;
+}
+
+section h1, h2 {
+	font-weight: bold;
+	color: #ce4a4a;
+	font-size: 24px;
+	margin: 20px 0;
+}
+
+section p {
+	line-height: 35px;
+	margin-bottom: 25px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.border {
+	border: 2px dashed #555;
+	margin: 45px;
+	padding: 30px;
+	width: 650px;
+}
+
+section a {
+	text-decoration: none;
+	color: #333;
+}
+
+.inline-margin a {
+	margin: 30px;
+}
+
+.inline-padding a {
+	padding: 30px;
+	background: green;
+	color: #fff;
+}
+
+.inline-float a {
+	float: left;
+	background: green;
+	color: #fff;
+	padding: 25px;
+	margin: 15px;
+	border: 3px solid darkgreen;
+	width: 124px;
+	text-align: center;
+}
+
+
+.cf:after, .cf:before {
+	display: block;
+	content: "";
+}
+
+.cf:after {
+	clear: both;
+}
+
+.block-normal {
+	margin-bottom: 35px;
+}
+
+.block-normal .box-1 {
+	background: dodgerblue;
+	color: #fff;
+}
+
+.block-normal .box-2 {
+	background: green;
+	height: 60px;
+	padding: 20px;
+	margin: 20px;
+	color: #fff;
+}
+
+.block-normal .box-3 {
+	background: tomato;
+	width: 90px;
+	color: #fff;
+}
+
+.floating-block .fb-1 {
+	float: left;
+	background: dodgerblue;
+	color: #fff;
+	border: 1px solid red;
+}
+
+.floating-block .fb-2 {
+	float: right;
+	background: tomato;
+	color: #fff;
+	border: 1px solid red;
+}
+
+.floating-block {
+	margin-bottom: 35px;
+}
+
+.floating-block .fb-3 {
+	float: left;
+	background: tomato;
+	color: #fff;
+	width: 500px;
+	height: 75px;
+	text-align: center;
+	line-height: 70px;
+	width: 400px;
+	height: 70px;
+}
+
+.floating-block .fb-4 {
+	float: right;
+	background: dodgerblue;
+	color: #fff;
+	width: 500px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.anchor a {
+	display: block;
+	background: dodgerblue;
+	text-align: center;
+	color: #fff;
+	margin: 10px;
+	padding: 10px;
+}
+
+.inline-block-nav {
+	text-align: center;
+}
+
+.inline-block-nav a {
+	display: inline-block;
+	color: #fff;
+	background: dodgerblue;
+	border: 1px solid #1b95e0;
+	padding: 20px 30px;
+    margin: 20px 8px 25px 8px;
+    width: 180px;
+}
+
+#inline-block:after {
+    content: "";
+    display: block;
+    border-bottom: 2px dashed #545459;
+    width: 100%;
+    padding-top: 30px;
+}
+
+#float-pos h1 {
+	text-align: center;
+	margin: 30px 0 25px 0;
+}
+
+.float-box-1 {
+	float: left;
+	background: tomato;
+	color: #fff;
+	width: 450px;
+	height: 100px;
+	line-height: 100px
+}
+
+.float-box-2 {
+	float:left;
+	background: dodgerblue;
+	color: #fff;
+	width: 500px;
+	height: 100px;
+	line-height: 100px
+}
+
+.float-box-3 {
+	clear: both;
+	background: seagreen;
+	color: #fff;
+	width: 950px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 35px;
+}
+
+.float-box div {
+	text-align: center;
+}
+
+#pos ul {
+	line-height: 27px;
+	margin: 0 0 35px 35px;
+
+}
+
+#pos li {
+	font-style: italic;
+}
+
+.box-rel {
+    position: relative;
+    background: tomato;
+    color: #fff;
+    width: 325px;
+    height: 70px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 70px;
+    right: 70px;
+    top: 34px;
+}
+
+.box-abs {
+    position: absolute;
+    background: green;
+    color: #fff;
+    height: 80px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px 26px;
+    right: 550px;
+    top: -27px;
+}
+
+.box-fix {
+    position: fixed;
+    background: dodgerblue;
+    color: #fff;
+    height: 70px;
+    width: 240px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 25px;
+    bottom: 59px;
+    left: 36px;
+}
+
+.relative {
+	position: relative
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
