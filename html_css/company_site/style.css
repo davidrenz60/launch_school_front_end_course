@@ -1,0 +1,202 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url("images/bg_body.gif");
+	text-align: center;
+	padding: 130px 0 0 0;
+	font: normal 20px Helvetica, Arial, sans-serif;
+	color: #45494d;
+}
+
+main {
+	background: #ffffff;
+	padding: 120px 0 0 0;
+}
+
+header h1 {
+	padding-bottom: 125px;
+}
+
+h2 {
+	font-size: 36px;
+	font-weight: bold;
+	padding-bottom: 40px;
+}
+
+h2:before, h2:after {
+	content: "\2022";
+	display: inline-block;
+	padding: 0 20px 0 20px;
+	font-size: 50px;
+	vertical-align: middle;
+}
+
+h3 {
+	color: #3e59b2;
+	font-weight: bold;
+	padding-bottom: 20px
+}
+
+nav {
+	padding-bottom: 50px;
+}
+
+nav a {
+	font-size: 26px;
+	text-decoration: none;
+	color: #cacaca;
+}
+
+nav a.active {
+	color: #6db9ff;
+	font-weight: bold;
+}
+
+nav li {
+	display: inline;
+	padding: 0 45px;
+}
+
+.column {
+	width: 900px;
+	margin: 0 auto;
+}
+
+article p {
+	padding: 0 75px 130px 75px;
+}
+
+p {
+	line-height: 28px;
+}
+
+footer {
+	height: 300px;
+	background: #e7e7e7;
+	color: #b2b2b2;
+	padding-top: 90px;
+}
+
+.column-footer {
+	width: 700px;
+	margin: 0 auto
+}
+
+footer li {
+	display: inline-block;
+	padding: 0 60px;
+}
+
+footer p {
+	padding-bottom: 40px;
+}
+
+footer li a {
+	display: block;
+	height: 46px;
+	width: 46px;
+	background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+}
+
+footer a.facebook {
+	background-position: 0 -46px;
+}
+
+footer a.email {
+	background-position: 0 -92px;
+}
+
+footer a.instagram {
+	background-position: 0 100%;
+}
+
+/*projects page*/
+
+div#projects {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+div#projects figure {
+	padding-bottom: 45px;
+}
+
+div#projects p {
+	padding: 0 125px 110px 125px;
+}
+
+/*team page*/
+
+#team li {
+	display: inline-block;
+}
+
+#team li img {
+	display: block;
+	padding: 0 30px 30px 30px;
+}
+
+#team a {
+	text-decoration: none;
+	color: #3e59b2;
+	font-size: 24px;
+}
+
+#team article {
+	padding-bottom: 220px;
+}
+
+/*team profile pages*/
+
+.profile {
+	opacity: 0.3;
+}
+
+main.profile {
+	height: 815px;
+}
+
+div.bio {
+	background: #ffffff;
+	position: absolute;
+	top: 675px;
+	left: 50%;
+	margin-left: -415px;
+	width: 830px;
+}
+
+div.bio figcaption {
+	position: relative;
+    bottom: 60px;
+    left: 30px;
+    font-size: 24px;
+    color: #3e59b2;
+}
+
+div.bio figure {
+	text-align: left;
+	padding: 70px 0 40px 90px;
+}
+
+div.bio img, div.bio figcaption {
+	display: inline-block;
+}
+
+div.bio p {
+	padding: 0 90px 110px 90px;
+	text-align: justify;
+}
+
+div.bio a.close-icon {
+	margin: 25px 25px 0 auto;
+	background: transparent url(images/icon_close.png) 0 0 no-repeat;
+	display: block;
+	text-align: right;
+	width: 30px;
+	height: 30px;
+	padding: 30px 25px 0 0;
+}
+
+
