@@ -1,50 +1,36 @@
+@import url("reset.css");
+
 * {
 	box-sizing: border-box;
 }
 
 body {
-	background-image: url("images/bg_body.gif");
+	background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
 	text-align: center;
 	padding: 130px 0 0 0;
-	font: normal 20px Helvetica, Arial, sans-serif;
+	font: normal 20px "Avenir", Helvetica, Arial, sans-serif;
 	color: #45494d;
 }
 
-main {
-	background: #ffffff;
-	padding: 120px 0 0 0;
-}
+/*header*/
 
 header h1 {
 	padding-bottom: 125px;
 }
 
-h2 {
-	font-size: 36px;
-	font-weight: bold;
-	padding-bottom: 40px;
-}
-
-h2:before, h2:after {
-	content: "\2022";
-	display: inline-block;
-	padding: 0 20px 0 20px;
-	font-size: 50px;
-	vertical-align: middle;
-}
-
-h3 {
-	color: #3e59b2;
-	font-weight: bold;
-	padding-bottom: 20px
-}
-
 nav {
+	font-size: 26px;
+	text-transform: uppercase;
 	padding-bottom: 50px;
 }
 
+nav li {
+	display: inline;
+	padding: 0 42px;
+}
+
 nav a {
-	font-size: 26px;
+
 	text-decoration: none;
 	color: #cacaca;
 }
@@ -54,43 +40,62 @@ nav a.active {
 	font-weight: bold;
 }
 
-nav li {
-	display: inline;
-	padding: 0 45px;
+/*main*/
+
+main {
+	background: #ffffff;
+	padding: 120px 0 0 0;
+}
+
+h2 {
+	font-size: 36px;
+	font-weight: 600;
+	padding-bottom: 40px;
+}
+
+h2:before,
+h2:after {
+	content: "\2022";
+	display: inline-block;
+	padding: 0 24px 0 24px;
+	font-size: 24px;
+	vertical-align: 5px;
+}
+
+h3 {
+	color: #3e59b2;
+	font-weight: bold;
+	padding-bottom: 20px
 }
 
 .column {
-	width: 900px;
+	width: 1000px;
 	margin: 0 auto;
 }
 
-article p {
-	padding: 0 75px 130px 75px;
+article {
+	padding-bottom: 150px;
 }
 
-p {
-	line-height: 28px;
+article p {
+	padding: 0 110px;
 }
+
+/*footer*/
 
 footer {
-	height: 300px;
 	background: #e7e7e7;
 	color: #b2b2b2;
-	padding-top: 90px;
+	padding: 80px 0;
 }
 
-.column-footer {
-	width: 700px;
-	margin: 0 auto
+footer p {
+	padding-bottom: 35px;
 }
 
 footer li {
 	display: inline-block;
 	padding: 0 60px;
-}
-
-footer p {
-	padding-bottom: 40px;
 }
 
 footer li a {
@@ -114,38 +119,34 @@ footer a.instagram {
 
 /*projects page*/
 
-div#projects {
-	width: 1000px;
-	margin: 0 auto;
-}
-
 div#projects figure {
-	padding-bottom: 45px;
-}
-
-div#projects p {
-	padding: 0 125px 110px 125px;
+	padding-bottom: 50px;
 }
 
 /*team page*/
 
+#team p {
+	padding: 0 120px 120px 120px;
+}
+
+#team ul {
+	padding-bottom: 220px;
+}
+
 #team li {
 	display: inline-block;
-}
-
-#team li img {
-	display: block;
-	padding: 0 30px 30px 30px;
-}
-
-#team a {
-	text-decoration: none;
-	color: #3e59b2;
+	padding: 0 30px;
 	font-size: 24px;
 }
 
-#team article {
-	padding-bottom: 220px;
+#team li a {
+	text-decoration: none;
+	color: #3e59b2;
+}
+
+#team img {
+	display: block;
+	margin-bottom: 30px;
 }
 
 /*team profile pages*/
@@ -168,16 +169,16 @@ div.bio {
 }
 
 div.bio figcaption {
-	position: relative;
-    bottom: 60px;
-    left: 30px;
     font-size: 24px;
     color: #3e59b2;
+    position: relative;
+    bottom: 70px;
+    left: 25px;
 }
 
 div.bio figure {
 	text-align: left;
-	padding: 70px 0 40px 90px;
+	padding-left: 80px;
 }
 
 div.bio img, div.bio figcaption {
@@ -185,18 +186,15 @@ div.bio img, div.bio figcaption {
 }
 
 div.bio p {
-	padding: 0 90px 110px 90px;
 	text-align: justify;
+	padding: 35px 80px 115px 80px;
 }
 
 div.bio a.close-icon {
-	margin: 25px 25px 0 auto;
 	background: transparent url(images/icon_close.png) 0 0 no-repeat;
-	display: block;
-	text-align: right;
 	width: 30px;
 	height: 30px;
-	padding: 30px 25px 0 0;
+	text-align: right;
+	display: block;
+	margin: 25px 25px 0 auto;
 }
-
-
