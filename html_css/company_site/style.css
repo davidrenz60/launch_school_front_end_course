@@ -15,7 +15,15 @@ body {
 /*header*/
 
 header h1 {
-	padding-bottom: 125px;
+	margin-bottom: 125px;
+}
+
+header h1 a {
+	display: inline-block;
+	width: 298px;
+	height: 243px;
+	text-indent: -9999px;
+	background: transparent url("images/logo.png") 0 0 no-repeat;
 }
 
 nav {
@@ -69,8 +77,9 @@ h3 {
 }
 
 .column {
-	width: 1000px;
+	max-width: 1000px;
 	margin: 0 auto;
+
 }
 
 article {
@@ -121,6 +130,10 @@ footer a.instagram {
 
 div#projects figure {
 	padding-bottom: 50px;
+}
+
+div#projects img {
+	width: 100%;
 }
 
 /*team page*/
@@ -198,3 +211,136 @@ div.bio a.close-icon {
 	display: block;
 	margin: 25px 25px 0 auto;
 }
+
+/*media queries*/
+
+@media (max-width: 875px) {
+	#team li {
+		width: 48%;
+		padding: 0 0 30px 0;
+	}
+
+	#team img {
+		margin: 0 auto 25px auto;
+	}
+}
+
+@media (max-width: 768px) {
+	 body {
+		padding-top: 65px;
+	}
+
+	header h1 {
+		margin-bottom: 0;
+	}
+
+	header h1 a {
+		width: 225px;
+		height: 185px;
+		margin: 0 auto 35px auto;
+		background-size: cover;
+	}
+
+	nav {
+		padding-bottom: 30px;
+	}
+
+	main {
+		padding-top: 75px;
+	}
+
+	article {
+		padding-bottom: 115px;
+	}
+
+	article p {
+		text-align: justify;
+		padding: 0 35px;
+	}
+
+	footer {
+		padding: 60px 0 40px 0;
+	}
+
+	footer p {
+		padding-bottom: 65px;
+	}
+
+	footer li {
+		padding: 0 35px;
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		padding-top: 0;
+		font-size: 16px;
+	}
+
+	header {
+		padding: 20px 15px;
+	}
+
+	header h1 {
+		float: left;
+		margin: 20px 0 0 0;
+		font-size: 20px;
+	}
+
+	header h1 a {
+		width: auto;
+		height: 50px;
+		padding: 10px 0 0 55px;
+		text-indent: 0;
+		color: #ffffff;
+		text-decoration: none;
+		background-size: 90px auto;
+		background-position: -20px 0;
+	}
+
+	nav {
+		text-align: right;
+		padding: 0;
+	}
+
+	nav li {
+		display: block;
+		font-size: 16px;
+		padding: 5px 0;
+	}
+
+	h2 {
+		font-size: 26px;
+
+	}
+
+	h2:before,
+	h2:after {
+		vertical-align: 0;
+	}
+
+	footer li {
+		padding: 0 20px;
+	}
+
+	#team p {
+		padding: 0 30px 40px 30px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
