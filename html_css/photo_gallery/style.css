@@ -3,8 +3,7 @@
 body {
 	font: normal 16px Helvetica, Arial, sans-serif;
 	background: #141414;
-	color: #ffffff;
-	text-align: center;
+	color: #f0f0f0;
 }
 
 main {
@@ -16,6 +15,7 @@ main {
 }
 
 h1 {
+	text-align: center;
 	font-size: 30px;
 	padding: 20px 0;
 }
@@ -26,17 +26,25 @@ figure {
 
 figcaption {
 	padding-top: 10px;
-	text-align: left;
 }
 
 img {
 	width: 100%;
-	border: 15px solid #ffffff;
 	box-sizing: border-box;
+}
+
+figure img {
+	border: 15px solid #ffffff;
+
+}
+
+li img {
+	border: 3px solid #ffffff;
 }
 
 ul {
 	margin: 0 -15px;
+	font-size: 0;
 }
 
 li {
@@ -46,6 +54,3 @@ li {
 	box-sizing: border-box;
 }
 
-li img {
-	border: 3px solid #ffffff;
-}
