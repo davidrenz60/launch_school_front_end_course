@@ -1,0 +1,152 @@
+@import url("reset.css");
+
+body {
+	margin: 8px;
+}
+
+article {
+	width: 684px;
+	border: 3px solid black;
+	font: 32px normal Helvetica, Arial, sans-serif;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+/*header */
+
+header {
+	border-bottom: 12px solid black;
+	margin-bottom: 5px;
+}
+
+h1 {
+	font-size: 80px;
+	font-weight: bold;
+	margin-bottom: -10px;
+}
+
+p {
+	margin: 0;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 24px;
+	margin-top: 10px;
+	border-top: 30px solid black;
+	border-bottom: 2px solid black;
+	padding: 10px 0;
+}
+
+header dl {
+	display: inline-block;
+}
+
+dd, dt {
+	display: inline;
+}
+
+dt {
+	font-weight: bold
+}
+
+header dl {
+	width: 50%;
+	padding: 5px 0;
+}
+
+header dl + dl {
+	text-align: right;
+}
+
+header dl + dl dt {
+	font-weight: normal;
+}
+
+/*tables*/
+
+table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+tbody td {
+	border-top: 1px solid black;
+	padding: 2px 0;
+}
+
+thead {
+	text-align: right;
+	font-weight: bold;
+	font-size: 27px;
+}
+
+sup {
+	line-height: 3px;
+}
+
+tbody + tbody tr:first-of-type {
+	border-top: 30px solid black;
+}
+
+td.indent {
+	width: 6%;
+	border-top: none;
+}
+
+td.indent + td dt {
+	font-weight: normal;
+}
+
+tbody td:last-of-type {
+	font-weight: bold;
+	text-align: right;
+}
+
+
+em {
+	font-style: italic;
+}
+
+
+table + table {
+	font-size: 26px;
+}
+
+table + table th {
+	text-align: left;
+	font-weight: normal;
+}
+
+tbody + tbody td:last-of-type {
+	font-weight: normal;
+}
+
+table + table td {
+	border-top: none;
+}
+
+table + table td:last-of-type {
+	font-weight: normal;
+	text-align: left;
+}
+
+
+tfoot td {
+	font-weight: normal;
+	font-size: 26px;
+	border-top: 1px solid black;
+	padding: 15px 0 15px 18px;
+	text-indent: -18px;
+}
+
+table + table thead {
+	border-bottom: 1px solid black;
+}
+
+table + table td.indent {
+	width: auto;
+	text-indent: 35px;
+}
+
