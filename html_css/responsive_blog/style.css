@@ -198,3 +198,73 @@ footer {
 	border-top: 1px solid #d0d0d0;
 	padding: 15px 0 50px 0;
 }
+
+@media (max-width: 768px) {
+	body > header {
+		padding: 40px 0 20px 0;
+	}
+
+	body > header h1 {
+		font-size: 48px;
+		letter-spacing: 10px;
+	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	textarea {
+		width: 100%;
+	}
+}
+
+@media (max-width: 600px) {
+	#content {
+		float: none;
+		width: auto;
+		margin: 0;
+		padding: 0 25px 50px 25px;
+	}
+
+	.block {
+		display: inline-block;
+		width: 49%;
+		vertical-align: top;
+	}
+
+	#sidebar ul {
+		padding-bottom: 0;
+}
+
+@media (max-width: 480px) {
+	body > header {
+		padding-bottom: 0;
+	}
+
+	body > header h1 {
+		background-size: 90% auto;
+		margin-bottom: 60px;
+		padding-bottom: 90px;
+	}
+
+	nav li {
+    display: inline-block;
+    width: 49%;
+    padding: 10px 0;
+	}
+
+	.block {
+		background: #f6f7f8;
+		display: block;
+		width: auto;
+		margin-bottom: 25px;
+		padding: 20px;
+	}
+
+	#sidebar {
+			background: transparent;
+			padding: 0 25px;
+		}
+}
