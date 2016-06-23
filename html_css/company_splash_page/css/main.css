@@ -20,6 +20,10 @@ main {
 	padding-top: 75px
 }
 
+article {
+	padding: 0 110px 100px 110px;
+}
+
 h2 {
 	font-size: 36px;
 }
