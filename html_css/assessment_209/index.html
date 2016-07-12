@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Todo List</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <input type="checkbox" id="hb-menu">
+    <section id="navigation">
+      <div id="todos">
+        <h3>All Todos<span>18</span></h3>
+        <ul>
+          <li class="active">02/16<span>8</span></li>
+          <li>03/16<span>8</span></li>
+          <li>04/16<span>8</span></li>
+          <li>05/16<span>8</span></li>
+          <li>06/16<span>8</span></li>
+        </ul>
+      </div>
+      <div id="completed">
+        <h3>Completed</h3>
+        <ul>
+          <li>02/15</li>
+          <li>03/15</li>
+          <li>04/15</li>
+          <li>05/15</li>
+          <li>06/15</li>
+        </ul>
+      </div>
+    </section>
+    <section id="content">
+      <label for="hb-menu" class="hb-menu"></label>
+      <header>
+        <h2>02/16<span>8</span></h2>
+        <p><a href="">Add new to do</a></p>
+      </header>
+      <ul>
+        <li>
+          <label for="modal">
+            Item 1
+          </label>
+          <p></p>
+        </li>
+        <li>
+          <p>Item 2</p>
+          <p></p>
+        </li>
+        <li class="complete">
+          <p>Item 3</p>
+          <p></p>
+        </li>
+        <li class="complete">
+          <p>Item 4</p>
+          <p></p>
+        </li>
+        <li class="complete">
+          <p>Item 5</p>
+          <p></p>
+        </li>
+        <li>
+          <p>Item 6</p>
+          <p></p>
+        </li>
+        <li>
+          <p>Item 7</p>
+          <p></p>
+        </li>
+        <li>
+          <p>Item 8</p>
+          <p></p>
+        </li>
+        <li>
+          <p>Item 9</p>
+          <p></p>
+        </li>
+      </ul>
+
+      <input type="checkbox" id="modal">
+      <!-- add class "modal" to enable  -->
+      <div class="hidden modal ">
+        <form action="#" method=post>
+          <fieldset>
+            <dl>
+              <dt><label for="title">Title</label></dt>
+              <dd><input type="text" id="title" placeholder="Item 1"></dd>
+            </dl>
+            <dl>
+              <dt><label for="day">Due Date</label></dt>
+              <dd class="partial"><input type="text" id="day" placeholder="Day"></dd>
+              <dd class="partial"><input type="text" id="month" placeholder="Month"></dd>
+              <dd class="partial"><input type="text" id="year" placeholder="Year"></dd>
+            </dl>
+            <dl>
+              <dt><label for="description">Description</label></dt>
+              <dd><textarea id="description" placeholder="Descrition"></textarea></dd>
+            </dl>
+            <dl>
+              <dt></dt>
+              <dd>
+                <a href="" class="button">Save</a>
+                <a href="" class="button">Mark As Complete</a>
+              </dd>
+            </dl>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

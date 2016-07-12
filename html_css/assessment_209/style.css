@@ -1,0 +1,290 @@
+@import url("reset.css");
+
+body {
+  font: 300 16px Helvetica, Arial, sans-serif;
+  color: #060606;
+}
+
+h2 {
+  font-size: 21px;
+  padding: 0 0 40px 13px;
+}
+
+h3 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-left: 100px;
+  padding-bottom: 10px;
+}
+
+span {
+  color: #ffffff;
+  background: #148fd5;
+  border-radius: 18px;
+  text-align: center;
+  padding: 0 5px;
+  font-size: 14px;
+  margin-left: 20px;
+  position: relative;
+  bottom: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: #060606;
+}
+
+#navigation {
+  float:left;
+  box-sizing: border-box;
+  width: 335px;
+  background: #464f77;
+  padding: 75px 0 0 0;
+  height: 100vh;
+}
+
+#navigation span {
+  background: #6b7292;
+  color: #b2b5c3;
+  bottom: 1px;
+  margin-left: 104px;
+}
+
+#navigation h3 span {
+  margin-left: 64px;
+}
+
+#navigation li {
+  color: #b2b5c3;
+  padding: 12px 0 12px 136px;
+}
+
+#navigation li.active {
+  background: #383f5f;
+  color: #ffffff;
+}
+
+#navigation li.active span {
+  color: #ffffff;
+  background: #148fd5;
+}
+
+#todos {
+  margin-bottom: 50px;
+}
+
+#todos h3:before {
+  content: "";
+  display: inline-block;
+  background: url("images/icon-todos.png");
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#completed h3:before {
+  content: "";
+  display: inline-block;
+  background: url("images/icon-menu.png");
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#completed li {
+  text-decoration: line-through;
+}
+
+#content {
+  overflow: hidden;
+  padding: 0 100px 0 20px;
+  position: relative;
+}
+
+#content header p {
+  padding: 0 0 15px 13px;
+}
+
+#content header a {
+  color: #148fd5;
+  padding-left: 28px;
+  background: url("images/icon-add.png") 0 50% no-repeat;
+}
+
+#content li p:hover {
+  color: #148fd5;
+}
+
+#content li {
+  border-top: 1px solid #e7e7e7;
+  padding: 15px 0 15px 13px;
+}
+
+#content li p {
+  display: inline-block;
+  padding-left: 28px;
+  background: url("images/icon-checkbox.png") 0 50% no-repeat;
+}
+
+#content li.complete p {
+  background: url("images/icon-complete.png") 0 50% no-repeat;
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+#content li.complete p + p {
+  background: url("images/icon-trash.png") 0 50% no-repeat;
+}
+
+#content li p + p {
+  float: right;
+  width: 16px;
+  height: 17px;
+  background: url("images/icon-trash.png") 0 50% no-repeat;
+  padding: 0;
+}
+
+#content li:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+label.hb-menu {
+  display: block;
+  width: 23px;
+  height: 18px;
+  background: none;
+  margin: 22px 0 35px 13px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 105px;
+  left: 105px;
+  z-index: 1;
+}
+
+.modal form {
+  width: 500px;
+  background: #ffffff;
+  padding: 35px;
+}
+
+.modal dd,
+.modal dt {
+  display: inline-block;
+}
+
+.modal dl {
+  padding-bottom: 25px;
+}
+
+.modal dl:last-of-type {
+  padding-bottom: 0;
+}
+
+.modal dt {
+  width: 20%;
+  height: 35px;
+  line-height: 35px;
+}
+
+.modal dd {
+  width: 393px;
+  vertical-align: top;
+}
+
+.modal dd.partial {
+  width: 122px;
+}
+
+#content li label:hover {
+  color: #148fd5;
+}
+
+#content li label {
+  display: inline-block;
+  padding-left: 28px;
+  background: url("images/icon-checkbox.png") 0 50% no-repeat;
+}
+
+#content li label + p {
+  float: right;
+  width: 16px;
+  height: 17px;
+  background: url("images/icon-trash.png") 0 50% no-repeat;
+  padding: 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 35px;
+  font: 300 16px Helvetica, Arial, sans-serif;
+  padding: 0 10px;
+}
+
+textarea {
+  width: 393px;
+  height: 145px;
+  box-sizing: border-box;
+  resize: none;
+  font: 300 16px Helvetica, Arial, sans-serif;
+  padding: 8px 10px;
+}
+
+input[type="checkbox"]:checked + div.modal {
+  display: block;
+}
+
+input[type="checkbox"]:checked + div.modal:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  content: "";
+  z-index: -1;
+}
+
+.button {
+  display: inline-block;
+  color: #ffffff;
+  width: 185px;
+  height: 36px;
+  line-height: 36px;
+  background: #148fd5;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.button:first-of-type {
+  margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+  label.hb-menu {
+    background: url("images/icon-hamburger.png") 0 0 no-repeat;
+    cursor: pointer;
+  }
+
+  #navigation {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked + #navigation {
+    display: block;
+  }
+}
