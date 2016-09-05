@@ -4,11 +4,11 @@ function fizzbuzz() {
   for (var i = 1; i <= 100; i++) {
     message = i;
 
-    if (i % 3 == 0 && i % 5 == 0) {
+    if (i % 3 === 0 && i % 5 === 0) {
       message = 'FizzBuzz';
-    } else if (i % 3 == 0) {
+    } else if (i % 3 === 0) {
       message = 'Fizz';
-    } else if (i % 5 == 0) {
+    } else if (i % 5 === 0) {
       message = 'Buzz';
     }
 
@@ -21,11 +21,11 @@ function fizzbuzz() {
 
   for (var i = 1; i <= 100; i++) {
     message = '';
-    if (i % 3 == 0) {
+    if (i % 3 === 0) {
       message += 'Fizz';
     }
 
-    if (i % 5 == 0) {
+    if (i % 5 === 0) {
       message += 'Buzz';
     }
 

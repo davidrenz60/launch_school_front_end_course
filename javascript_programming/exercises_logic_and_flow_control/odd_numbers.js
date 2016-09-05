@@ -1,11 +1,10 @@
 function printOddNumbers(num) {
   for (var i = 1; i <= num; i ++) {
-    if (i % 2 == 1) {
+    if (i % 2 === 1) {
         console.log(i)
     }
   }
 }
-
 
 function printOddNumbers(num) {
   for (var i = 1; i <= num; i += 2) {
@@ -15,10 +14,10 @@ function printOddNumbers(num) {
 
 function printOddNumbers(num) {
   for (var i = 1; i <= num; i++) {
-    if (i % 2 == 0) {
+    if (i % 2 === 0) {
       continue;
     }
 
-    console.log(i) 
+    console.log(i)
   }
 }
