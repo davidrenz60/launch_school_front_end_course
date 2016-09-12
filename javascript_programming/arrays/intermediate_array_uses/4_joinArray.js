@@ -7,19 +7,3 @@
 function joinArray(arr, joiner) {
   return arr.join(joiner || '');
 }
-
-joinArray(['a', 'b', 'c'], '+'); // Returns "a+b+c"
-joinArray([1, 4, 1, 5, 9, 2, 7]); // Returns "1415927"
-
-algorithm:
-create an empty result var ''
-
-if separator = undefined, set it to '';
-iterate through array,
-i = 0 to arr.length
-
-  if i > 0, add the separator
-
-  add the arr[i] elements
-
-  return result
