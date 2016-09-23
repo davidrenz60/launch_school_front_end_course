@@ -53,7 +53,8 @@ read(400);
 ```
 
 use two spaces for indentation
-spaces before and after operators (=, + and < )
+
+use spaces before and after operators (=, + and < )
 
 ```JavaScript
 function read(pages) {
