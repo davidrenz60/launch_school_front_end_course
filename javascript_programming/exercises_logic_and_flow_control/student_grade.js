@@ -2,7 +2,7 @@ var scores = [];
 var avgScore;
 var grade;
 
- function avg(scores) {
+function avg(scores) {
   var score = 0;
   for (i = 0; i < scores.length; i++) {
     score += scores[i];
