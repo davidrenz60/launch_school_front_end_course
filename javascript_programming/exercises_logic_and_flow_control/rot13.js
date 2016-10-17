@@ -20,7 +20,7 @@ function rot13(string) {
 }
 
 function isUpperCase(charCode) {
-  return charCode >= 65 && charCode <= 90;
+  return (charCode >= 65 && charCode <= 90);
 }
 
 function isLowerCase(charCode) {
