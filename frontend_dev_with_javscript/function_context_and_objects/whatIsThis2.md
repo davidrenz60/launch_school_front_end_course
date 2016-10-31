@@ -20,8 +20,7 @@ myObject.myChildObject.myMethod();
 In the previous example, how would we change the context, or the value of this, to be the parent myObject?
 
 `myObject.myChildObject.myMethod.call(myObject);`
-
-add `.bind(myObject)` to the end of the function.
+Or add `.bind(myObject)` to the end of the function.
 
 
 3.
@@ -40,6 +39,7 @@ whoIsSpiderman();
 ```
 
 `Peter Parker is the Amazing Spiderman!`
+
 `.bind(person)` will return a function bound to the `person` object.
 `whoIsSpiderman` variable is set to that bound function and can be called with
 the expected results.
@@ -65,9 +65,13 @@ obj.func.call(obj2);
 ```
 
 `2`
+
 `1` note, when no `thisArg` is supplied, `this` becomes the window here
+
 `1`
+
 `2`
+
 `3`
 
 5.
@@ -96,9 +100,13 @@ console.log(this.a);
 ```
 
 `2`. `foo` is set to call the `Foo` constructor, which calls `this.bar()`
+
 `2`. `foo.bar()` logs `foo.a` which was set previously
+
 `2`. `Foo()` changed the global `a` property on window. The constructor calls `this.bar` which logs `a`
+
 `2`. `Foo` is called with the `obj` context, setting `obj.a = 2`. `obj.bar()` is then called'
+
 `2`. Since `obj.a` is set to `2`, `obj.bar()` will log 2
 
 
@@ -124,11 +132,14 @@ var computer = {
 console.log(computer.total())
 ```
 will log `NaN` since tax is a local variable and not a property.
-
 In order to fix it to apply the proper discount, one of the following can be done:
+
 change `this.tax` to just be `tax`
+
 Add `var self = this` below the tax variable and change `this.price` in the conditional to reference `self`
+
 Or You could also change the `specialDiscount()` function call to `specialDiscount.call(this)`
+
 Or, set a var named `specialDiscount` to equal the function with `bind(this)`
 
 7.
@@ -157,7 +168,5 @@ console.log(rect1.circumference);
 both will log `NaN` when `rect1.area` is called, it will be called in the RECTANGLE context,
 which does not have width or height properties. undefined + undefined will be NaN
 
-How do you fix this problem?
-
-add `.call(this)` to the end of  `RECTANGLE.area()`  `RECTANGLE.circumference()` within the
+In order to fix: add `.call(this)` to the end of  `RECTANGLE.area()`  `RECTANGLE.circumference()` within the
 Rectangle constructor
