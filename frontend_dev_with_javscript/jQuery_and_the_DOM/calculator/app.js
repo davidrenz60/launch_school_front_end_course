@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     var result = 0;
     var numerator = +$form.find('#numerator').val();
-    var denominator = +$form.find('denominator').val();
+    var denominator = +$form.find('#denominator').val();
     var operator = $form.find('#operator').val();
 
     if (operator === '+') {
