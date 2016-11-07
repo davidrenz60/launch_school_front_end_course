@@ -1,12 +1,15 @@
-$(document).ready(function() {
-  $('form').on('submit', function(e) {
+function $(idSelector) {
+  return document.getElementById(idSelector);
+}
+
+window.onload = function() {
+  $('calculator').onsubmit = function(e) {
     e.preventDefault();
-    var $form = $(this);
 
     var result = 0;
-    var numerator = +$form.find('#numerator').val();
-    var denominator = +$form.find('#denominator').val();
-    var operator = $form.find('#operator').val();
+    var numerator = +$('numerator').value;
+    var denominator = +$('denominator').value;
+    var operator = $('operator').value;
 
     if (operator === '+') {
       result = numerator + denominator;
@@ -18,6 +21,6 @@ $(document).ready(function() {
       result = numerator / denominator;
     }
 
-    $('h1').text(result);
-  });
-});
+    $('result').innerHTML = result;
+  };
+};
