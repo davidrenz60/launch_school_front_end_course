@@ -1,0 +1,41 @@
+body {
+  background-color: #c0dfd9;
+}
+
+main {
+  background-color:#e9ece5;
+  border: 5px solid #b3c2bf;
+  padding: 25px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+h1 {
+  font: normal 40px monospace;
+}
+
+fieldset {
+  border: none;
+}
+
+input[type='number'] {
+  width: 100px;
+  height: 35px;
+  font: normal 24px monospace;
+  border: 1px solid #b3c2bf;
+  border-radius: 5px;
+  vertical-align: middle;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+input[type='submit'] {
+  background: #ffffff;
+  border: 1px solid #b3c2bf;
+  height: 35px;
+  width: 40px;
+  border-radius: 5px;
+  font: normal 20px monospace;
+  vertical-align: middle;
+}
