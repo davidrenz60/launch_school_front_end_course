@@ -1,0 +1,341 @@
+@import url("reset.css");
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #2f2840 url("images/bg_body.gif") 50% 0 repeat;
+	text-align: center;
+	padding: 130px 0 0 0;
+	font: normal 20px "Avenir", Helvetica, Arial, sans-serif;
+	color: #45494d;
+}
+
+/*header*/
+
+header h1 {
+	margin-bottom: 125px;
+}
+
+header h1 a {
+	display: inline-block;
+	width: 298px;
+	height: 243px;
+	text-indent: -9999px;
+	background: transparent url("images/logo.png") 0 0 no-repeat;
+}
+
+nav {
+	font-size: 26px;
+	text-transform: uppercase;
+	padding-bottom: 50px;
+}
+
+nav li {
+	display: inline;
+	padding: 0 42px;
+}
+
+nav a {
+
+	text-decoration: none;
+	color: #cacaca;
+}
+
+nav a.active {
+	color: #6db9ff;
+	font-weight: bold;
+}
+
+/*main*/
+
+main {
+	background: #ffffff;
+	padding: 120px 0 0 0;
+}
+
+h2 {
+	font-size: 36px;
+	font-weight: 600;
+	padding-bottom: 40px;
+}
+
+h2:before,
+h2:after {
+	content: "\2022";
+	display: inline-block;
+	padding: 0 24px 0 24px;
+	font-size: 24px;
+	vertical-align: 5px;
+}
+
+h3 {
+	color: #3e59b2;
+	font-weight: bold;
+	padding-bottom: 20px
+}
+
+.column {
+	max-width: 1000px;
+	margin: 0 auto;
+
+}
+
+article {
+	padding-bottom: 150px;
+}
+
+article p {
+	padding: 0 110px;
+}
+
+/*footer*/
+
+footer {
+	background: #e7e7e7;
+	color: #b2b2b2;
+	padding: 80px 0;
+}
+
+footer p {
+	padding-bottom: 35px;
+}
+
+footer li {
+	display: inline-block;
+	padding: 0 60px;
+}
+
+footer li a {
+	display: block;
+	height: 46px;
+	width: 46px;
+	background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+}
+
+footer a.facebook {
+	background-position: 0 -46px;
+}
+
+footer a.email {
+	background-position: 0 -92px;
+}
+
+footer a.instagram {
+	background-position: 0 100%;
+}
+
+/*projects page*/
+
+div#projects figure {
+	padding-bottom: 50px;
+}
+
+div#projects img {
+	width: 100%;
+}
+
+/*team page*/
+
+#team p {
+	padding: 0 120px 120px 120px;
+}
+
+#team ul {
+	padding-bottom: 220px;
+}
+
+#team li {
+	display: inline-block;
+	padding: 0 30px;
+	font-size: 24px;
+}
+
+#team li a {
+	text-decoration: none;
+	color: #3e59b2;
+}
+
+#team img {
+	display: block;
+	margin-bottom: 30px;
+}
+
+/*modal styles*/
+
+.modal_layer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, .3);
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  margin-left: -400px;
+  z-index: 3;
+  width: 800px;
+  padding: 125px 70px 70px 70px;
+  background: #ffffff;
+  text-align: left;
+}
+
+#team .modal p {
+  padding: 0;
+  font-size: 20px;
+}
+
+#team .modal img {
+  display: inline-block;
+  width: 96px;
+  margin: 0 30px 20px 0;
+  vertical-align: middle;
+}
+
+.modal h3 {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+.modal a.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  background: transparent url('images/icon_close.png');
+  z-index: 1;
+  text-indent: -9000px;
+}
+
+/*media queries*/
+
+@media (max-width: 875px) {
+	#team li {
+		width: 48%;
+		padding: 0 0 30px 0;
+	}
+
+	#team img {
+		margin: 0 auto 25px auto;
+	}
+}
+
+@media (max-width: 768px) {
+	 body {
+		padding-top: 65px;
+	}
+
+	header h1 {
+		margin-bottom: 0;
+	}
+
+	header h1 a {
+		width: 225px;
+		height: 185px;
+		margin: 0 auto 35px auto;
+		background-size: cover;
+	}
+
+	nav {
+		padding-bottom: 30px;
+	}
+
+	main {
+		padding-top: 75px;
+	}
+
+	article {
+		padding-bottom: 115px;
+	}
+
+	article p {
+		text-align: justify;
+		padding: 0 35px;
+	}
+
+	footer {
+		padding: 60px 0 40px 0;
+	}
+
+	footer p {
+		padding-bottom: 65px;
+	}
+
+	footer li {
+		padding: 0 35px;
+	}
+
+  .modal {
+    margin: 0;
+    left: 0;
+    width: 100%;
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+	body {
+		padding-top: 0;
+		font-size: 16px;
+	}
+
+	header {
+		padding: 20px 15px;
+	}
+
+	header h1 {
+		float: left;
+		margin: 20px 0 0 0;
+		font-size: 20px;
+	}
+
+	header h1 a {
+		width: auto;
+		height: 50px;
+		padding: 10px 0 0 55px;
+		text-indent: 0;
+		color: #ffffff;
+		text-decoration: none;
+		background-size: 90px auto;
+		background-position: -20px 0;
+	}
+
+	nav {
+		text-align: right;
+		padding: 0;
+	}
+
+	nav li {
+		display: block;
+		font-size: 16px;
+		padding: 5px 0;
+	}
+
+	h2 {
+		font-size: 26px;
+
+	}
+
+	h2:before,
+	h2:after {
+		vertical-align: 0;
+	}
+
+	footer li {
+		padding: 0 20px;
+	}
+
+	#team p {
+		padding: 0 30px 40px 30px;
+	}
+}
