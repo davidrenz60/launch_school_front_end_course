@@ -11,68 +11,67 @@ $(function() {
     September: 'sapphire',
     October: 'opal or tourmaline',
     November: 'topaz or citrine',
-    December: 'turquoise, zircon, or tanzanite'
+    December: 'turquoise, zircon, or tanzanite',
   };
 
-  $("nav a").on("mouseenter", function() {
-    $(this).next("ul").addClass('visible');
+  $('nav a').on('mouseenter', function() {
+    $(this).next('ul').addClass('visible');
   });
 
-  $("nav").on("mouseleave", function() {
-    $(this).find("ul ul").removeClass('visible');
+  $('nav').on('mouseleave', function() {
+    $(this).find('ul ul').removeClass('visible');
   });
 
-  $(".button, button").on("click", function(e) {
+  $('.button, button').on('click', function(e) {
     e.preventDefault();
 
-    $(this).addClass("clicked");
+    $(this).addClass('clicked');
   });
 
-  $(".toggle").on("click", function(e) {
+  $('.toggle').on('click', function(e) {
     e.preventDefault();
 
-    $(this).next(".accordion").toggleClass('opened');
+    $(this).next('.accordion').toggleClass('opened');
   });
 
-  $("form").on("submit", function(e) {
+  $('form').on('submit', function(e) {
     e.preventDefault();
-    var cc_number = $(this).find("[type=text]").val();
-    var total = getLuhnTotal(cc_number);
+    var ccNumber = $(this).find('[type=text]').val();
+    var total = getLuhnTotal(ccNumber);
     var isValid = total % 10 === 0;
 
-      $(this).find(".success").toggle(isValid);
-      $(this).find(".error").toggle(!isValid);
+    $(this).find('.success').toggle(isValid);
+    $(this).find('.error').toggle(!isValid);
   });
 
-  $("ul a").on("click", function(e) {
+  $('ul a').on('click', function(e) {
     e.preventDefault();
     var month = $(this).text();
-    var $stone = $("#birthstone");
+    var $stone = $('#birthstone');
 
     $stone.text('Your birthstone is ' + months[month] + '.');
   });
 
-  function getLuhnTotal(cc_number) {
-    var odd_total = 0;
-    var even_total = 0;
+  function getLuhnTotal(ccNumber) {
+    var oddTotal = 0;
+    var evenTotal = 0;
 
-    cc_number = cc_number.split("").reverse();
-    for (var i = 0, len = cc_number.length; i < len; i++) {
-      if (i % 2 == 1) {
-        cc_number[i] = (+cc_number[i] * 2) + "";
-        if (cc_number[i].length > 1) {
-          cc_number[i] = +cc_number[i][0] + +cc_number[i][1];
+    ccNumber = ccNumber.split('').reverse();
+    for (var i = 0, len = ccNumber.length; i < len; i++) {
+      if (i % 2 === 1) {
+        ccNumber[i] = (+ccNumber[i] * 2) + '';
+        if (ccNumber[i].length > 1) {
+          ccNumber[i] = +ccNumber[i][0] + Number(ccNumber[i][1]);
+        } else {
+          ccNumber[i] = +ccNumber[i];
         }
-        else {
-          cc_number[i] = +cc_number[i];
-        }
-        odd_total += cc_number[i];
-      }
-      else {
-        even_total += +cc_number[i];
+
+        oddTotal += ccNumber[i];
+      } else {
+        evenTotal += +ccNumber[i];
       }
     }
 
-    return odd_total + even_total;
+    return oddTotal + evenTotal;
   }
 });
