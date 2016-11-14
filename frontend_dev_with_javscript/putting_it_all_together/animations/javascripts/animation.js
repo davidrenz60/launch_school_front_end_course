@@ -1,43 +1,65 @@
 $(function() {
-  $('form').submit(function(e) {
-    e.preventDefault();
-    var input = $(this).serializeArray();
-    var data = {};
-    var $div = $('<div></div>');
+  var $canvas = $('#canvas');
 
-    input.forEach(function(obj) {
-      data[obj.name] = obj.value;
+  function getFormObject($form) {
+    var obj = {};
+
+    $form.serializeArray().forEach(function(input) {
+      obj[input.name] = input.value;
     });
 
-    $div.data(data).addClass(data.shape_type).css({
+    return obj;
+  }
+
+  function createElement(data) {
+    var $div = $('<div />', {
+      class: data.shape_type,
+      data: data,
+    });
+
+    resetElement($div);
+    return $div;
+  }
+
+  function resetElement($e) {
+    var data = $e.data();
+
+    $e.css({
       left: +data.x_start,
       top: +data.y_start,
     });
+  }
 
-    $('#canvas').append($div);
+  function animateElement() {
+    var $e = $(this);
+    var data = $e.data();
+
+    resetElement($e);
+    $e.animate({
+      left: +data.x_end,
+      top: +data.y_end,
+    }, +data.duration);
+  }
+
+  function stopAnimations() {
+    $canvas.find('div').stop();
+  }
+
+  $('form').submit(function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    var data = getFormObject($form);
+
+    $canvas.append(createElement(data));
   });
 
   $('#start').on('click', function(e) {
     e.preventDefault();
-    var $shapes = $('#canvas > div');
-
-    $shapes.each(function() {
-      var $element = $(this);
-      var startPos = {
-        left: +$element.data('x_start'),
-        top: +$element.data('y_start'),
-      };
-      var endPos = {
-        left: +$element.data('x_start') + +$element.data('x_end'),
-        top: +$element.data('y_start') + +$element.data('y_end'),
-      };
-
-      $element.stop().css(startPos).animate(endPos, 1000);
-    });
+    $canvas.find('div').each(animateElement);
   });
 
   $('#stop').on('click', function(e) {
     e.preventDefault();
-    $('#canvas > div').stop();
+    stopAnimations();
   });
 });
