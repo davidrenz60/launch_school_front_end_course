@@ -1,0 +1,75 @@
+body {
+  background: #9f1a32;
+  font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+main {
+  background: #ffffff;
+  width: 802px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+#canvas {
+  height: 600px;
+  width: 100%;
+  position: relative;
+  border: 1px solid #cccccc;
+  background: linear-gradient(to bottom, #ebecee 0%, #656ff1 100%);
+}
+
+#canvas > div {
+  position: absolute;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: #dde338;
+}
+
+p {
+  margin-top: 20px;
+}
+
+#canvas .star {
+  background: transparent url('../images/star.png');
+  background-size: 100% auto;
+}
+
+#canvas .circle {
+  border-radius: 100%;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+dl {
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+dt {
+  padding: 0 0 5px 0;
+}
+
+dd {
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+input[type="number"] {
+  height: 30px;
+  width: 70px;
+  font-size: 18px;
+  padding: 5px 0 5px 5px;
+  font: normal 14px Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+
+
+}

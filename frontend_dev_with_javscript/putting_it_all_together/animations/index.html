@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>animations</title>
+    <meta charset="UTF-8" />
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="javascripts/animation.js"></script>
+  </head>
+  <body>
+    <main>
+      <div id="canvas"></div>
+      <p>
+        <a href="#" id="start">Start</a>
+        |
+        <a href="#" id="stop">End</a>
+      </p>
+      <form action="" method="get">
+        <fieldset>
+          <h1>Add a Shape</h1>
+          <h2>Type</h2>
+          <ul>
+            <li><label><input type="radio" value="circle" name="shape_type" checked>Circle</label></li>
+            <li><label><input type="radio" value="square" name="shape_type">Square</label></li>
+            <li><label><input type="radio" value="star" name="shape_type">Star</label></li>
+          </ul>
+          <dl>
+            <dt><label for="x_start">Starting Point</label></dt>
+            <dd>
+              <input type="number" name="x_start" placeholder="x:" id="x_start">
+              <input type="number" name="y_start" placeholder="y:" id="y_start">
+            </dd>
+            <dt><label for="x_end">Ending Point</label></dt>
+            <dd>
+              <input type="number" name="x_end" placeholder="x:" id="x_end">
+              <input type="number" name="y_end" placeholder="y:" id="y_end" >
+            </dd>
+          </dl>
+          <input type="submit" value="Add">
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
