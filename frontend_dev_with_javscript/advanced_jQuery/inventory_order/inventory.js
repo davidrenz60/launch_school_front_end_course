@@ -4,24 +4,74 @@ var inventory;
   inventory = {
     collection: [],
     lastId: 0,
-    addItem: function() {
+    add: function() {
+      this.lastId++;
       var item = {
         id: this.lastId,
         name: '',
-        stockNumber:  '',
+        stockNumber: '',
         quantity: 1,
       };
       this.collection.push(item);
-      this.lastId += 1;
+
+      return item;
     },
 
-    deleteItem: function(el) {
-      var id = el.closest('tr').find('input[type=hidden]').val();
-      var idx = this.collection.findIndex(function(item) {
-        return item.id === +id;
+    findId: function($item) {
+      return +$item.find('input[type=hidden]').val();
+    },
+
+    get: function(id) {
+      var foundItem;
+      this.collection.forEach(function(item) {
+        if (item.id === id) {
+          foundItem = item;
+          return false;
+        }
       });
 
-      this.collection.splice(idx, 1);
+      return foundItem;
+    },
+
+    remove: function(id) {
+      this.collection = this.collection.filter(function(item) {
+        return item.id !== id;
+      });
+    },
+
+    update: function($item) {
+      var id = this.findId($item);
+      var item = this.get(id);
+
+      item.name = $item.find('input[name^=item_name]').val();
+      item.stockNumber = $item.find('input[name^=item_stock_number]').val();
+      item.quantity = +$item.find('input[name^=item_quantity]').val();
+    },
+
+    newItem: function(e) {
+      e.preventDefault();
+      console.log(this);
+      var item = this.add();
+      var html = this.template.replace(/ID/g, item.id);
+
+      $('#inventory').append(html);
+    },
+
+    deleteItem: function(e) {
+      e.preventDefault();
+      var $item = this.findParent(e).remove();
+      var id = this.findId($item);
+
+      this.remove(id);
+    },
+
+    updateItem: function(e) {
+      var $item = $(e.target).closest('tr');
+      this.update($item);
+    },
+
+    findParent: function(e) {
+      return $(e.target).closest('tr');
     },
 
     setDate: function() {
@@ -30,54 +80,22 @@ var inventory;
     },
 
     cacheTemplate: function() {
-      var $i_templ = $('#inventory_item').remove();
-      this.template = $i_templ.html();
+      var $templ = $('#inventory_item').remove();
+      this.template = $templ.html();
+    },
+
+    bindEvents: function() {
+      $('#add_item').on('click', this.newItem.bind(this));
+      $('#inventory').on('click', this.deleteItem.bind(this));
+      $('#inventory').on('blur', ':input', this.updateItem.bind(this));
     },
 
     init: function() {
       this.setDate();
       this.cacheTemplate();
+      this.bindEvents();
     },
   };
 })();
 
-$(inventory.init.bind(inventory)); //
-// $($.proxy(inventory.init, inventory));  same as calling above with $.proxy,
-
-$(function() {
-  $('button').on('click', function(e) {
-    e.preventDefault();
-    var template = inventory.template.replace(/ID/g, inventory.lastId);
-
-    $('table').append(template);
-    inventory.addItem();
-  });
-
-  $('#inventory').on('click', '.delete', function(e) {
-    e.preventDefault();
-    var $el = $(this);
-    $el.closest('tr').remove();
-    inventory.deleteItem($el);
-  });
-
-  $('#inventory').on('blur', 'input', function(e) {
-    e.preventDefault();
-    var $el = $(this);
-    var value = $el.val();
-    var property = getPropertyName($el);
-    var idx = $el.closest('tr').find('input[type=hidden]').val();
-    inventory.collection[idx][property] = value;
-  });
-
-  function getPropertyName(el) {
-    var attrName = el.attr('name');
-
-    if (attrName.match('name')) {
-      return 'name';
-    } else if (attrName.match('stock')) {
-      return 'stockNumber';
-    } else if (attrName.match('quantity')) {
-      return 'quantity';
-    }
-  }
-});
+$(inventory.init.bind(inventory)); // jQuery.proxy() method will do the same: $($.proxy(inventory.init, inventory)); 
