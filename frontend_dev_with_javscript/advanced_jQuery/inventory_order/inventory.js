@@ -17,6 +17,13 @@ var inventory;
       return item;
     },
 
+    newItem: function(e) {
+      e.preventDefault();
+      var item = this.add();
+      var $item = $(this.template({ id: item.id }));
+      $('#inventory').append($item);
+    },
+
     findId: function($item) {
       return +$item.find('input[type=hidden]').val();
     },
@@ -48,15 +55,6 @@ var inventory;
       item.quantity = +$item.find('input[name^=item_quantity]').val();
     },
 
-    newItem: function(e) {
-      e.preventDefault();
-      console.log(this);
-      var item = this.add();
-      var html = this.template.replace(/ID/g, item.id);
-
-      $('#inventory').append(html);
-    },
-
     deleteItem: function(e) {
       e.preventDefault();
       var $item = this.findParent(e).remove();
@@ -80,13 +78,13 @@ var inventory;
     },
 
     cacheTemplate: function() {
-      var $templ = $('#inventory_item').remove();
-      this.template = $templ.html();
+      var $inventoryTemplate = $('#inventory_item').remove();
+      this.template = Handlebars.compile($inventoryTemplate.html());
     },
 
     bindEvents: function() {
       $('#add_item').on('click', this.newItem.bind(this));
-      $('#inventory').on('click', this.deleteItem.bind(this));
+      $('#inventory').on('click', '.delete', this.deleteItem.bind(this));
       $('#inventory').on('blur', ':input', this.updateItem.bind(this));
     },
 
@@ -98,4 +96,4 @@ var inventory;
   };
 })();
 
-$(inventory.init.bind(inventory)); // jQuery.proxy() method will do the same: $($.proxy(inventory.init, inventory)); 
+$(inventory.init.bind(inventory));
