@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Handlebars Exercises</title>
+    <meta charset="UTF-8" />
+    <link rel='stylesheet' href='' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <script src="javascripts.js"></script>
+  </head>
+  <body>
+    <script id="posts" type="text/x-handlebars">
+      {{#each posts}}
+        <article>
+            <h1>{{title}}</h1>
+            <p><time>Posted on {{published}}</time></p>
+            <p>{{body}}</p>
+            <footer>
+              </p>
+                {{>tagsList}}
+              </p>
+            </footer>
+          {{/each}}
+        </article>
+    </script>
+
+    <script id='tagsList' type='text/x-handlebars'>
+      {{#if tags}}
+        {{#each tags}}
+          <strong>{{.}}</strong>
+        {{/each}}
+      {{else}}
+        <p>Not tagged</p>
+      {{/if}}
+    </script>
+
+  </body>
+</html>
