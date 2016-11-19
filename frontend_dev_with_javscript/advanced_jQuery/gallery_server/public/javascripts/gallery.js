@@ -9,14 +9,38 @@ $(function() {
     templates[property] = Handlebars.compile($template.html());
   });
 
-  // make ajax request and render photos and information of the first photo
+  // register any partials
+  $('[data-type=partial]').each(function() {
+    var $partial = $(this);
+    Handlebars.registerPartial($partial.attr('id'), $partial.html());
+  });
+
+  // make ajax request and render photos, information and comments of the first photo
   $.ajax({
     url: '/photos',
     success: function(json) {
       photos = json;
-      console.log(photos);
-      $('#slides').append(templates.photos({ photos: photos }));
-      $('section > header').append(templates.photo_information(photos[0]));
+      renderPhotos();
+      renderPhotoInformation(0);
+      getCommentsFor(photos[0].id);
     },
   });
+
+  function renderPhotos() {
+    $('#slides').html(templates.photos({ photos: photos }));
+  }
+
+  function renderPhotoInformation(idx) {
+    $('section > header').html(templates.photo_information(photos[idx]));
+  }
+
+  function getCommentsFor(photoId) {
+    $.ajax({
+      url: '/comments',
+      data: 'photo_id=' + photoId,
+      success: function(comment_json) {
+        $('#comments ul').html(templates.comments({ comments: comment_json }));
+      },
+    });
+  }
 });
