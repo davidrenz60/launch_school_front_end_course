@@ -2,20 +2,17 @@ $(function() {
   var templates = {};
   var photos;
 
-  // loop through each handlebars script and add methods to templates object
   $("script[type='text/x-handlebars']").each(function() {
     var $template = $(this);
     var property = $template.attr('id');
     templates[property] = Handlebars.compile($template.html());
   });
 
-  // register any partials
   $('[data-type=partial]').each(function() {
     var $partial = $(this);
     Handlebars.registerPartial($partial.attr('id'), $partial.html());
   });
 
-  // capture slideshow functionality in slideshow object
   var slideshow = {
     $el: $('#slideshow'),
     duration: 500,
@@ -48,6 +45,7 @@ $(function() {
     },
 
     renderPhotoContent: function(id) {
+      $('[name=photo_id]').val(id); // changes form hidden input value to current photo id
       renderPhotoInformation(id);
       getCommentsFor(id);
     },
@@ -62,7 +60,6 @@ $(function() {
     },
   };
 
-  // make ajax request and render photos, information and comments of the first photo
   $.ajax({
     url: '/photos',
     success: function(json) {
@@ -76,11 +73,44 @@ $(function() {
     },
   });
 
+  $('section > header').on('click', '.actions a', function(e) {
+    e.preventDefault();
+    var photoIdx = slideshow.$el.find('figure:visible').index();
+    var currentPhoto = photos[photoIdx];
+    var $el = $(e.target); // need to use e.target instead of 'this' which refers to header in this case
+
+    $.ajax({
+      type: 'POST',
+      url: $el.attr('href'),
+      data: 'photo_id=' + $el.attr('data-id'),
+      success: function(json) {
+        $el.text(function(idx, text) {
+          return text.replace(/\d+/, json.total);
+        });
+
+        currentPhoto[$el.attr('data-property')] = json.total;
+      },
+    });
+  });
+
+  $('form').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+
+    $.ajax({
+      type: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize(),
+      success: function(json) {
+        $('#comments ul').append(templates.comment(json));
+      },
+    });
+  });
+
   function renderPhotos() {
     $('#slides').html(templates.photos({ photos: photos }));
   }
 
-  // change function to find info by id rather than index
   function renderPhotoInformation(id) {
     var photo = photos.filter(function(item) {
       return item.id === +id;
@@ -89,12 +119,12 @@ $(function() {
     $('section > header').html(templates.photo_information(photo));
   }
 
-  function getCommentsFor(photoId) {
+  function getCommentsFor(id) {
     $.ajax({
       url: '/comments',
-      data: 'photo_id=' + photoId,
-      success: function(commentJson) {
-        $('#comments ul').html(templates.comments({ comments: commentJson }));
+      data: 'photo_id=' + id,
+      success: function(json) {
+        $('#comments ul').html(templates.comments({ comments: json }));
       },
     });
   }
