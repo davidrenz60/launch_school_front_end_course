@@ -1,0 +1,33 @@
+canvas {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #858585
+}
+
+ul {
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+}
+
+li {
+  display: inline-block;
+  padding: 0 5px 0 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+  background: #ececec;
+  padding: 8px 20px;
+}
+
+a.active {
+  color: #ffffff;
+  background: #0066cc;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
