@@ -10,14 +10,15 @@
   <body>
     <canvas width="800" height="500"></canvas>
     <ul>
-      <li><a href="#" class="drawing_method">Circle</a></li>
-      <li><a href="#" class="drawing_method">Square</a></li>
-      <li><a href="#" class="drawing_method">Triangle</a></li>
-      <li><a href="#" id="clear">Triangle</a></li>
+      <li><a href="#" class="drawing_method" data-method="circle">Circle</a></li>
+      <li><a href="#" class="drawing_method" data-method="square">Square</a></li>
+      <li><a href="#" class="drawing_method" data-method="triangle">Triangle</a></li>
+      <li><a href="#" id="clear">Clear</a></li>
       <li>
           <form>
           <fieldset>
-            <label>Color: <input type="text"></label>
+            <label>Color: <input type="text" id="color"></label>
+            <label>Size(px): <input type="text" id="size" value='30'></label>
           </fieldset>
         </form>
       </li>

@@ -31,3 +31,7 @@ fieldset {
   border: none;
   padding: 0;
 }
+
+label {
+  padding: 0 10px;
+}
