@@ -2,7 +2,7 @@ var $letters = $('#spaces');
 var $guesses = $('#guesses');
 var $apples = $('#apples');
 var $message = $('#message');
-var $reset = $('#reset');
+var $replay = $('#replay');
 
 var randomWord = function() {
   var words = ['apple', 'banana', 'orange', 'pear'];
@@ -14,6 +14,13 @@ var randomWord = function() {
   };
 }();
 
+function notALetter(code) {
+  var a = 97;
+  var z = 122;
+
+  return (code < a || code > z);
+}
+
 function Game() {
   this.word = randomWord();
   this.incorrect = 0;
@@ -21,12 +28,16 @@ function Game() {
   this.guessedLetters = [];
   if (!this.word) {
     this.displayMessage('Sorry, there are no more words left!');
+    this.toggleReplayLink(false);
+    return this;
   }
   this.word = this.word.split('');
   this.init();
 }
 
 Game.prototype = {
+  guesses: 6,
+
   displayMessage: function(text) {
     $message.text(text);
   },
@@ -38,83 +49,115 @@ Game.prototype = {
     this.$spaces = $('#spaces span');
   },
 
-  addGuessed: function(letter) {
-    this.guessedLetters.push(letter);
-    $guesses.append('<span>' + letter + '</span>');
-  },
-
-  guessed: function(guess) {
-    return this.guessedLetters.indexOf(guess) >= 0;
-  },
-
-  displayMatches: function(guess) {
-    this.word.forEach(function(letter, index) {
-      if (guess === letter) {
+  fillBlanksFor: function(letter) {
+    this.word.forEach(function(char, index) {
+      if (letter === char) {
         this.$spaces.eq(index).text(letter);
         this.correctSpaces += 1;
       }
     }, this);
   },
 
-  checkGuesses: function(guess) {
-    if (this.word.indexOf(guess) === -1) {
-      this.incorrect += 1;
-      $apples.addClass('guess_' + this.incorrect);
+  duplicateGuess: function(letter) {
+    var duplicate = $.inArray(letter, this.guessedLetters) >= 0;
+
+    if (!duplicate) {
+      this.guessedLetters.push(letter);
+    }
+
+    return duplicate;
+  },
+
+  renderGuess: function(letter) {
+    $('<span/>', {
+      text: letter
+    }).appendTo($guesses);
+  },
+
+  emptyGuesses: function() {
+    $guesses.find('span').remove();
+  },
+
+  renderIncorrectGuess: function(letter) {
+    this.incorrect++;
+    this.renderGuess(letter);
+    this.setClass();
+  },
+
+  setGameStatus: function(status) {
+    $(document.body).removeClass();
+
+    if (status) {
+      $(document.body).addClass(status);
     }
   },
 
-  checkWin: function() {
-    if (this.correctSpaces === this.word.length) {
-      this.unbind();
-      this.displayMessage('You guessed the word. You win!');
-      $reset.show();
-    }
+  setClass: function() {
+    $apples.removeClass().addClass('guess_' + this.incorrect);
   },
 
-  checkLoss: function() {
-    if (this.incorrect >= 6) {
-      this.unbind();
-      this.displayMessage('You ran out of letters. You lose');
-      $reset.show();
-    }
+  toggleReplayLink: function(which) {
+    $replay.toggle(which);
+  },
+
+  win: function() {
+    this.unbind();
+    this.setGameStatus('win');
+    this.toggleReplayLink(true);
+    this.displayMessage('You guessed the word. You win!');
+  },
+
+  lose: function() {
+    this.unbind();
+    this.setGameStatus('lose');
+    this.toggleReplayLink(true);
+    this.displayMessage('You ran out of guesses. You lose!');
   },
 
   processKey: function(e) {
-    var charCode = e.which;
-    var guess = String.fromCharCode(charCode);
+    var letter = String.fromCharCode(e.which);
 
-    if (charCode < 97 || charCode > 122 || this.guessed(guess)) {
+    if (notALetter(e.which) || this.duplicateGuess(e.which)) {
       return;
     }
 
-    this.addGuessed(guess);
-    this.displayMatches(guess);
-    this.checkGuesses(guess);
-    this.checkWin();
-    this.checkLoss();
+    if ($.inArray(letter, this.word) >= 0) {
+      this.fillBlanksFor(letter);
+      if (this.correctSpaces === this.word.length) {
+        this.win();
 
+      }
+    } else {
+      this.renderIncorrectGuess(letter);
+    }
+
+    if (this.incorrect === this.guesses) {
+      this.lose();
+    }
+  },
+
+  bind: function() {
+    $(document).on('keypress.game', this.processKey.bind(this));
   },
 
   unbind: function() {
-    $(document).off('keypress');
+    $(document).off('.game');
   },
 
   init: function() {
+    this.bind();
+    this.setClass();
+    this.toggleReplayLink(false);
+    this.setGameStatus();
     this.createBlanks();
-    $reset.hide();
-    $guesses.find('span').remove();
-    this.displayMessage("");
-    $(document).on('keypress', this.processKey.bind(this));
-    $apples.removeClass();
-
+    this.emptyGuesses();
+    this.displayMessage('');
   },
 };
 
-$(function() {
+new Game();
+
+$replay.on('click', function(e) {
+  e.preventDefault();
   new Game();
-
-  $('p').on('click', 'a', function() {
-    new Game();
-  });
 });
-
