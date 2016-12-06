@@ -1,29 +1,65 @@
-$(function() {
-  var answer = Math.floor(Math.random() * 100) + 1;
-  var guesses = 0;
+function randomNumber() {
+    return Math.floor(Math.random() * 100) + 1;
+}
 
-  $('form').submit(function(e) {
+$(function() {
+  var $form = $('form');
+  var $guess = $('#guess');
+  var $p = $('p');
+  var $a = $('a');
+
+  var Game = {
+  displayMessage: function(text) {
+    $p.text(text);
+  },
+
+  processGuess: function(e) {
     e.preventDefault();
 
-    var message;
-    var guess = +$('#guess').val();
-    guesses++;
+    if (this.gameOver) {
+      return;
+    }
 
-    if (guess === answer) {
-      message = 'You win! It took you ' + guesses + ' guesses.';
-    } else if (guess < answer) {
+    var message;
+    var guess = +$guess.val();
+    this.guesses++;
+
+    if (guess === this.answer) {
+      message = 'You win! It took you ' + this.guesses + ' guesses.';
+      this.gameOver = true;
+      this.unbind();
+    } else if (guess < this.answer) {
       message = 'My number is higher than ' + guess + '.';
     } else {
       message = 'My number is lower than ' + guess + '.';
     }
 
-    $('p').text(message);
-  });
+    this.displayMessage(message);
+    $guess.val('');
+  },
 
-  $('a').click(function(e) {
+  bind: function() {
+    $form.on('submit.game', this.processGuess.bind(this));
+  },
+
+  unbind: function() {
+    $form.off('.game');
+  },
+
+  init: function() {
+    this.guesses = 0;
+    this.answer = randomNumber();
+    this.bind();
+    this.displayMessage('Guess a number from 1 to 100');
+    this.gameOver = false;
+    return this;
+  }
+};
+
+  var game = Object.create(Game).init();
+
+  $a.on('click', function(e) {
     e.preventDefault();
-    answer = Math.floor(Math.random() * 100) + 1;
-    guesses = 0;
-    $('p').text('Guess a number from 1 to 100');
+      game = Object.create(Game).init();
   });
 });
