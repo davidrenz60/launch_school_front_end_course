@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  font: normal 20px Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+
+h1 {
+  font-size: 34px;
+  padding: 0 0 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #428bca;
+}
+
+h1 a {
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 25px;
+  padding: 0 0 10px 0;
+  text-align: center;
+}
+
+h3 {
+  padding: 0 0 15px 0;
+}
+
+dl {
+  font-size: 15px;
+  padding: 0 0 15px 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+h4 {
+  padding: 0 0 10px 0;
+  font-weight: 500;
+}
+
+header {
+  background: linear-gradient(to bottom, #563d7d, #6f5499 );
+  color: #cdbfe3;
+  text-align: center;
+  padding: 50px 0 30px 0;
+}
+
+#control {
+  overflow: hidden;
+  width: 80%;
+  text-align: center;
+  border: 1px solid #e3e3e3;
+  background: #f5f5f5;
+  padding: 20px 0 20px 0;
+  margin: 0 auto 30px auto;
+}
+
+#contact-list {
+  overflow: hidden;
+  width: 80%;
+  background: #ffffff;
+  margin: 0 auto;
+}
+
+#contact-list li {
+  float: left;
+  width: 25%;
+  padding: 0 0 35px 0;
+}
+
+#contacts-empty,
+#message-empty,
+#message-tag {
+  text-align: center;
+  margin: 0 auto 30px auto;
+  background: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  padding: 40px 0 20px 0;
+}
+
+#message-empty,
+#message-tag {
+  display: none;
+  width: 75%;
+}
+
+#contacts-empty {
+  width: 95%;
+}
+
+.form {
+  display: none;
+  width: 100%;
+  background: #ffffff;
+  top: 0;
+  margin: 0 auto;
+  padding: 30px 0 0 0;
+}
+
+.form li {
+  overflow: hidden;
+  width: 100%;
+  padding: 0 0 10px 0;
+}
+
+.form form {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.form .label {
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 9px 0 0 0;
+}
+
+.contact a {
+  font-size: 12px;
+}
+
+.tag {
+  font-size: 15px;
+  padding: 0 0 10px 0;
+}
+
+.tag a {
+  font-size: inherit;
+  cursor: pointer;
+}
+
+footer {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid #eee;
+  padding: 20px 0 0 0;
+
+}
+
+.button {
+  display: inline-block;
+  font-size: 18px;
+  color: #563d7d;
+  border: 1px solid #563d7d;
+  padding: 10px 15px;
+  border-radius: 7px;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #563d7d;
+}
+
+input {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 35px;
+  font-size: 15px;
+  color: #2b2b2b;
+  padding: 2px 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.field input[type='submit'] {
+  height: 43px;
+  width: 37%;
+}
+
+.cancel {
+  width: 37%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.field input {
+  width: 75%;
+}
+
+.field {
+  padding: 0 0 0 35px;
+  box-sizing: border-box;
+}
+
+.half {
+  width: 50%;
+  float: left;
+}
+
+.third {
+  width: 33.3%;
+  float: left;
+}
+
+.two-thirds {
+  width: 66.6%;
+  float: left;
+}

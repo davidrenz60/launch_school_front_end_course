@@ -1,0 +1,33 @@
+1. animations 
+    clicking add contact slides up create contact form
+    cancel contact slides up contact view 
+    slide in on page load
+2. clicking edfit contact slides in edit contact view
+3. links
+    heading links to homepage
+4. buttons change color on hover
+5. submit adds new contact
+6.edit contact slides contact into view
+7.search feature
+    updates with each letter press
+    display a message when there are no matches
+        below the contacts list
+
+8. delete contact
+    -gives alert box first
+
+9. layout
+    contacts are in 4 columns
+
+10. add a message when there are no contacts with button
+11. contacts still show when page loaded
+12. add tag to contact
+13. clicking on a tag shows all contacts with that tag
+
+css
+dark purple #5d4384
+light purple: #6a4f93
+grey bg #6a4f93
+header subtext #cdbfe3
+other font #333
+

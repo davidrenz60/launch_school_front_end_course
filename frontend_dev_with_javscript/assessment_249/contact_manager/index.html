@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Contact Manager</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link rel="stylesheet" href="stylesheets/manager.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <script src="javascripts/manager.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="index.html">Contact Manager</a></h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus.<p>
+    </header>
+
+    <main>
+      <section id="create" class="form">
+        <h2>Create Contact</h2>
+        <form action="get" method="#">
+          <fieldset>
+            <ul>
+              <li>
+                <div class="third label">
+                  <label for="name">Full Name:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="text" id="name" name="name">
+                </div>
+              </li>
+              <li>
+                <div class="third label">
+                  <label for="email">Email:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="email" id="email" name="email">
+                </div>
+              </li>
+              <li>
+                <div class="third label">
+                  <label for="phone">Telephone number:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="tel" id="phone" name="phone">
+                </div>
+              </li>
+              <li>
+              <li>
+                <div class="third label">
+                  <label for="tag">tag:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="text" id="tag" name="tag">
+                </div>
+              </li>
+              <li>
+                <div class="third label"></div>
+                <div class="two-thirds field">
+                  <input type="submit" class="button" value="Create">
+                  <a href="#" class="button toggle-create cancel">Cancel</a>
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="edit" class="form">
+        <h2>Edit Contact</h2>
+        <form action="get" method="#">
+          <fieldset>
+            <ul>
+              <li>
+                <div class="third label">
+                  <label for="name">Full Name:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="text" id="name" name="name">
+                </div>
+              </li>
+              <li>
+                <div class="third label">
+                  <label for="email">Email:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="email" id="email" name="email">
+                </div>
+              </li>
+              <li>
+                <div class="third label">
+                  <label for="phone">Telephone number:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="tel" id="phone" name="phone">
+                </div>
+              </li>
+              <li>
+              <li>
+                <div class="third label">
+                  <label for="tag">tag:</label>
+                </div>
+                <div class="two-thirds field">
+                  <input type="text" id="tag" name="tag">
+                </div>
+              </li>
+              <li>
+                <div class="third label"></div>
+                <div class="two-thirds field">
+                  <input type="submit" class="button" value="Save">
+                  <a href="#" class="button toggle cancel">Cancel</a>
+                </div>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="content">
+        <div id="control">
+          <div class="half"><a href="#" class="button toggle-create">Add Contact</a></div>
+          <div class="half"><input type="text" placeholder="Search" id="search"></div>
+        </div id="control">
+
+        <div id="contact-list">
+          <ul></ul>
+        </div>
+
+        <div id="contacts-empty">
+          <h4>There are no contacts.</h4>
+          <a href="#" class="button toggle-create">Add contact</a>
+        </div>
+
+        <div id="message-empty">
+          <h4>There are no contacts starting with <strong></strong>.</h4>
+        </div>
+
+        <div id="message-tag">
+          <h4>Showing contacts that match <strong></strong>.</h4>
+          <a href="#" class="button">Return</a>
+        </div>
+      </section>
+
+    </main>
+    <footer>
+      <p>Lorem ipsum dolor sit amet, Aliquam metus.</p>
+    </footer>
+
+    <script id="contact" type='text/x-handlebars'>
+      <li data-id="{{id}}">
+        <div class="contact">
+          <h3>{{name}}</h3>
+          <dl>
+            <dt>Phone Number:</dt>
+            <dd>{{phone}}</dd>
+            <dt>Email:</dt>
+            <dd>{{email}}</dd>
+          </dl>
+          <div class="tag">
+            <p>tag: <a href-"#">{{tag}}</a></p>
+          </div>
+          <div>
+            <a href="#" class='button edit'>Edit</a>
+            <a href="#" class='button delete'>Delete</a>
+          </div>
+        </div>
+      </li>
+    </script>
+  </body>
+</html>
