@@ -1,0 +1,298 @@
+@import url("reset.css");
+
+body {
+  font: 300 16px Helvetica, Arial, sans-serif;
+  color: #060606;
+}
+
+h2 {
+  margin: 0 0 40px 0;
+  font-size: 21px;
+}
+
+h3 {
+  color: #ffffff;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+span {
+  margin-left: 20px;
+  position: relative;
+  bottom: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: #060606;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.circle {
+  background: #6b7292;
+  color: #b2b5c3;
+  border-radius: 18px;
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.active p.circle,
+span.highlight {
+  color: #ffffff;
+  background: #148fd5;
+}
+
+.active {
+  background: #383f5f;
+  color: #ffffff;
+}
+
+.container {
+  margin-left: 335px;
+}
+
+#navigation {
+  float:left;
+  box-sizing: border-box;
+  width: 335px;
+  background: #464f77;
+  padding: 75px 0 0 0;
+  height: 100vh;
+  margin-left: -335px;
+}
+
+#navigation p {
+  float: left;
+}
+
+#navigation p + p {
+  float: right;
+}
+
+#navigation li {
+  color: #b2b5c3;
+  padding: 12px 35px 12px 135px;
+  overflow: hidden;
+}
+
+#navigation li.active {
+  color: #ffffff;
+}
+
+#todos-heading {
+  padding: 5px 35px 0 100px;
+  overflow: hidden;
+}
+
+#todos-heading p,
+#completed-heading p {
+  float: right;
+  margin-top: 4px;
+}
+
+#all-todos {
+  margin-bottom: 50px;
+}
+
+#navigation h3 {
+  float: left;
+  position: relative;
+  right: 40px;
+}
+
+#all-todos h3:before {
+  content: "";
+  display: inline-block;
+  background: url("../images/icon-todos.png");
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#completed h3:before {
+  content: "";
+  display: inline-block;
+  background: url("../images/icon-menu.png");
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#completed li.complete {
+  text-decoration: line-through;
+}
+
+#content {
+  padding: 0 100px 0 20px;
+  position: relative;
+  min-width: 170px;
+}
+
+#content header {
+  margin: 55px 0 15px 13px;
+}
+
+#content header a {
+  color: #148fd5;
+  padding-left: 28px;
+  background: url("../images/icon-add.png") 0 50% no-repeat;
+}
+
+#content li {
+  border-top: 1px solid #e7e7e7;
+  padding: 15px 0 15px 13px;
+}
+
+#content li:hover {
+  background-color: rgba(0, 123, 255, 0.29);
+}
+
+#content li a {
+  display: inline-block;
+  padding-left: 28px;
+  background: url("../images/icon-checkbox.png") 0 50% no-repeat;
+}
+
+#content li a:hover {
+  color: #148fd5;
+}
+
+#content a.complete,
+#content a.complete:hover {
+  background: url("../images/icon-complete.png") 0 50% no-repeat;
+  text-decoration: line-through;
+  color: #b3b3b3;
+}
+
+#content li a:last-of-type {
+  float: right;
+  width: 16px;
+  height: 17px;
+  background: url("../images/icon-trash.png") 0 50% no-repeat;
+  padding: 0;
+}
+
+label.hb-menu {
+  display: block;
+  position: relative;
+  top: 20px;
+  width: 23px;
+  height: 18px;
+  background: none;
+}
+
+form {
+  width: 500px;
+  background: #ffffff;
+  padding: 35px;
+}
+
+.form-row label {
+  width: 20%;
+  float: left;
+  padding-top: 9px;
+}
+
+.form-row {
+  padding-bottom: 25px;
+}
+
+.form-row span {
+  all: initial;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+  font: 300 16px Helvetica, Arial, sans-serif;
+  width: 80%;
+  height: 35px;
+  padding: 0 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font: 300 16px Helvetica, Arial, sans-serif;
+  width: 124px;
+  height: 35px;
+  background: url("../images/select-arrows.png") 95% 50% no-repeat;
+  border-radius: 0;
+  padding: 0 10px;
+}
+
+textarea {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  box-sizing: border-box;
+  font: 300 16px Helvetica, Arial, sans-serif;
+  width: 80%;
+  height: 145px;
+  vertical-align: top;
+  resize: none;
+  padding: 8px 10px;
+}
+
+.button {
+  font-size: 16px;
+  display: inline-block;
+  color: #ffffff;
+  width: 185px;
+  height: 36px;
+  line-height: 36px;
+  background: #148fd5;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+.button + .button {
+  margin-left: 19px;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 105px;
+  left: 5%;
+  z-index: 1;
+}
+
+.modal-layer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  content: "";
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  label.hb-menu {
+    background: url("../images/icon-hamburger.png") 0 0 no-repeat;
+    cursor: pointer;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+
+  #navigation {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked + .container {
+    margin-left: 335px;
+  }
+
+  input[type="checkbox"]:checked + .container #navigation {
+    display: block;
+  }
+}
