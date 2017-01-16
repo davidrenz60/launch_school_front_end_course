@@ -23,6 +23,7 @@ span {
 }
 
 a {
+  cursor: default;
   text-decoration: none;
   color: #060606;
 }
@@ -75,6 +76,7 @@ span.highlight {
 #navigation li {
   color: #b2b5c3;
   padding: 12px 35px 12px 135px;
+  cursor: pointer;
   overflow: hidden;
 }
 
@@ -123,7 +125,7 @@ span.highlight {
   margin-right: 10px;
 }
 
-#completed li.complete {
+#completed li.complete p {
   text-decoration: line-through;
 }
 
@@ -140,6 +142,7 @@ span.highlight {
 #content header a {
   color: #148fd5;
   padding-left: 28px;
+  cursor: pointer;
   background: url("../images/icon-add.png") 0 50% no-repeat;
 }
 

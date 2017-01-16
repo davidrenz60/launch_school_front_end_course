@@ -5,7 +5,10 @@ $(function() {
   var $modal = $('.modal, .modal-layer');
   var $form = $('form');
   var $todoList = $('#content ul');
-  var $total = $('#content header span');
+  var $allTodos = $('#all-todos ul');
+  var $completedTodos = $('#completed ul');
+  var $total = $('.total');
+  var $nav = $('#navigation');
   var months = {
     'January': '01',
     'February': '02',
@@ -51,9 +54,21 @@ $(function() {
     return result;
   }
 
+  function count(array, element) {
+    return array.filter(function(el) {
+      return el === element;
+    }).length;
+  }
+
   var TodoApp = {
-    updateTotal: function() {
+    updateTotals: function() {
       $total.text(this.todos.length);
+    },
+
+    toggleMenuItem: function(e) {
+      var $e = $(e.currentTarget);
+      $nav.find('.active').removeClass('active');
+      $e.addClass('active');
     },
 
     get: function(id) {
@@ -62,7 +77,35 @@ $(function() {
       });
     },
 
-    delete: function(e) {
+    getMonthlyTodoObject: function(todos) {
+      var result = {};
+      var dates = todos.map(function(todo) {
+        return todo.dueDate;
+      });
+
+      var uniqueDates = dates.filter(function(date, index, arr) {
+        return arr.indexOf(date) === index;
+      });
+
+      var dateCounts = uniqueDates.map(function(date) {
+        var obj = {};
+        obj.date = date;
+        obj.total = count(dates, date);
+        return obj;
+      });
+
+      result.todosTotal = dates.length;
+      result.monthlyTodos = dateCounts;
+      return result;
+    },
+
+    completedTodos: function() {
+      return this.todos.filter(function(todo) {
+        return todo.completed === true;
+      });
+    },
+
+    deleteTodo: function(e) {
       e.preventDefault();
       var $el = $(e.target);
       var id = $el.data('id');
@@ -72,7 +115,8 @@ $(function() {
       var index = this.todos.indexOf(todo);
       this.todos.splice(index, 1);
 
-      this.updateTotal();
+      this.updateTotals();
+      this.renderTodos();
       this.setLocalStorage();
     },
 
@@ -92,6 +136,7 @@ $(function() {
       this.lastId++;
 
       this.todos.push(todo);
+      this.updateTotals();
       this.renderTodos();
     },
 
@@ -105,11 +150,11 @@ $(function() {
       }
 
       this.closeModal();
-      this.updateTotal();
+      this.updateTotals();
       this.setLocalStorage();
     },
 
-    completeTodo: function(e) {
+    markTodoComplete: function(e) {
       e.preventDefault();
       var id = $('form').data('id');
       var todo = this.get(id);
@@ -155,7 +200,13 @@ $(function() {
     },
 
     renderTodos: function() {
+      $allTodos.html(templates.allTodos(this.getMonthlyTodoObject(this.todos)));
+      $completedTodos.html(templates.completedTodos(this.getMonthlyTodoObject(this.completedTodos())));
       $todoList.html(templates.todos({ todos: this.todos }));
+    },
+
+    setActiveClass: function() {
+      $('#todos-heading').click();
     },
 
     setLocalStorage: function() {
@@ -164,27 +215,30 @@ $(function() {
     },
 
     loadTodos: function() {
-      this.todos = localStorage.todos ? JSON.parse(localStorage.todos) : [];
+      return localStorage.todos ? JSON.parse(localStorage.todos) : [];
     },
 
     loadLastId: function() {
-      this.lastId = +localStorage.lastId || 1;
+      return +localStorage.lastId || 1;
     },
 
     bind: function() {
       $('.add-new').on('click', this.showModal.bind(this));
       $('.modal-layer').on('click', this.closeModal.bind(this));
-      $todoList.on('click', '.delete', this.delete.bind(this));
+      $todoList.on('click', '.delete', this.deleteTodo.bind(this));
       $todoList.on('click', '.todo', this.showModal.bind(this));
-      $('form').on('submit', this.save.bind(this));
-      $('button').on('click', this.completeTodo.bind(this));
+      $form.on('submit', this.save.bind(this));
+      $('button').on('click', this.markTodoComplete.bind(this));
+      $nav.on('click', 'li', this.toggleMenuItem.bind(this));
     },
 
     init: function () {
-      this.loadLastId();
-      this.loadTodos();
+      this.lastId = this.loadLastId();
+      this.todos = this.loadTodos();
       this.bind();
+      this.updateTotals();
       this.renderTodos();
+      this.setActiveClass();
       return this;
     }
   };

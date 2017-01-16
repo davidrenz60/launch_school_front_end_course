@@ -13,47 +13,18 @@
     <div class="container">
       <section id="navigation">
         <div id="all-todos">
-          <ul>
-            <li id="todos-heading" class="active">
-              <h3>All Todos</h3>
-              <p class="circle">0</p>
-            </li>
-            <li>
-              <p>02/16</p>
-              <p class="circle">8</p>
-            </li>
-             <li>
-              <p>02/16</p>
-              <p class="circle">8</p>
-            </li>
-             <li>
-              <p>02/16</p>
-              <p class="circle">8</p>
-            </li>
-          </ul>
+          <ul></ul>
         </div>
+
         <div id="completed">
-          <ul>
-            <li id="completed-heading">
-              <h3>Completed</h3>
-              <p class="circle">5</p>
-            </li>
-            <li class="complete">
-              <p>02/15</p>
-              <p class="circle">8</p>
-            </li>
-            <li class="complete">
-              <p>02/15</p>
-              <p class="circle">8</p>
-            </li>
-          </ul>
+          <ul></ul>
         </div>
       </section>
 
       <section id="content">
         <label for="hb-menu" class="hb-menu"></label>
         <header>
-          <h2>All Todos<span class="circle highlight">0</span></h2>
+          <h2>All Todos<span class="circle highlight total">0</span></h2>
           <p><a class="add-new" href="">Add new to do</a></p>
         </header>
         <ul></ul>
@@ -147,6 +118,32 @@
       </section>
     </div>
 
+    <script id="allTodos" data-type="partial" type="text/x-handlebars">
+      <li id="todos-heading">
+        <h3>All Todos</h3>
+        <p class="circle">{{todosTotal}}</p>
+      </li>
+      {{#each monthlyTodos}}
+      <li>
+        <p>{{date}}</p>
+        <p class="circle">{{total}}</p>
+      </li>
+      {{/each}}
+    </script>
+
+    <script id="completedTodos" data-type="partial" type="text/x-handlebars">
+      <li id="completed-heading">
+        <h3>Completed</h3>
+        <p class="circle">{{todosTotal}}</p>
+      </li>
+      {{#each monthlyTodos}}
+      <li class="complete">
+        <p>{{date}}</p>
+        <p class="circle">{{total}}</p>
+      </li>
+      {{/each}}
+    </script>
+
     <script id="todo" data-type="partial" type="text/x-handlebars">
       <li>
         <a class="todo" data-id="{{id}}" href="">{{title}} - {{dueDate}}</a>
@@ -173,6 +170,5 @@
       {{/if}}
       {{/each}}
     </script>
-
   </body>
 </html>
