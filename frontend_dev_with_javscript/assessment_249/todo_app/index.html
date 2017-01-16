@@ -24,7 +24,7 @@
       <section id="content">
         <label for="hb-menu" class="hb-menu"></label>
         <header>
-          <h2>All Todos<span class="circle highlight total">0</span></h2>
+          <h2></h2>
           <p><a class="add-new" href="">Add new to do</a></p>
         </header>
         <ul></ul>
@@ -117,6 +117,10 @@
         <div class="modal-layer"></div>
       </section>
     </div>
+
+    <script id="heading" type="text/x-handlebars">
+          {{date}}<span class="circle highlight total">{{total}}</span>
+    </script>
 
     <script id="allTodos" data-type="partial" type="text/x-handlebars">
       <li id="todos-heading">

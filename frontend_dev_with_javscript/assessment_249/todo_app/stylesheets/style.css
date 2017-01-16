@@ -125,7 +125,7 @@ span.highlight {
   margin-right: 10px;
 }
 
-#completed li.complete p {
+#completed li.complete p:first-of-type {
   text-decoration: line-through;
 }
 

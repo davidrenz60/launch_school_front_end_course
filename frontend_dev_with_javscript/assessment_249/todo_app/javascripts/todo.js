@@ -1,5 +1,3 @@
-var todoApp;
-
 $(function() {
   var templates = {};
   var $modal = $('.modal, .modal-layer');
@@ -7,7 +5,7 @@ $(function() {
   var $todoList = $('#content ul');
   var $allTodos = $('#all-todos ul');
   var $completedTodos = $('#completed ul');
-  var $total = $('.total');
+  var $h2 = $('h2');
   var $nav = $('#navigation');
   var months = {
     'January': '01',
@@ -24,16 +22,19 @@ $(function() {
     'December': '12',
   };
 
-  $("script[type='text/x-handlebars']").each(function() {
-    var $template = $(this);
-    var property = $template.attr('id');
-    templates[property] = Handlebars.compile($template.html());
-  });
 
-  $('[data-type=partial]').each(function() {
-    var $partial = $(this);
-    Handlebars.registerPartial($partial.attr('id'), $partial.html());
-  });
+  (function cacheTemplates() {
+    $('[data-type=partial]').each(function() {
+      var $partial = $(this);
+      Handlebars.registerPartial($partial.attr('id'), $partial.html());
+    });
+
+    $("script[type='text/x-handlebars']").each(function() {
+      var $template = $(this).remove();
+      var property = $template.attr('id');
+      templates[property] = Handlebars.compile($template.html());
+    });
+  })();
 
   function formatDueDate(todo) {
     if (!todo.month || !todo.year || !todo.day) {
@@ -61,19 +62,35 @@ $(function() {
   }
 
   var TodoApp = {
-    updateTotals: function() {
-      $total.text(this.todos.length);
-    },
-
-    toggleMenuItem: function(e) {
-      var $e = $(e.currentTarget);
-      $nav.find('.active').removeClass('active');
-      $e.addClass('active');
-    },
-
     get: function(id) {
       return this.todos.find(function(todo) {
         return todo.id === id;
+      });
+    },
+
+    completedTodos: function() {
+      return this.todos.filter(function(todo) {
+        return todo.completed === true;
+      });
+    },
+
+    getTodosByDate: function(date) {
+      if (date === "All Todos") {
+        return this.todos;
+      }
+
+      return this.todos.filter(function(todo) {
+        return todo.dueDate === date;
+      });
+    },
+
+    getCompletedTodosByDate: function(date) {
+      if (date === "Completed") {
+        return this.completedTodos();
+      }
+
+      return this.completedTodos().filter(function(todo) {
+        return todo.dueDate === date;
       });
     },
 
@@ -99,12 +116,6 @@ $(function() {
       return result;
     },
 
-    completedTodos: function() {
-      return this.todos.filter(function(todo) {
-        return todo.completed === true;
-      });
-    },
-
     deleteTodo: function(e) {
       e.preventDefault();
       var $el = $(e.target);
@@ -115,7 +126,6 @@ $(function() {
       var index = this.todos.indexOf(todo);
       this.todos.splice(index, 1);
 
-      this.updateTotals();
       this.renderTodos();
       this.setLocalStorage();
     },
@@ -136,7 +146,6 @@ $(function() {
       this.lastId++;
 
       this.todos.push(todo);
-      this.updateTotals();
       this.renderTodos();
     },
 
@@ -150,7 +159,6 @@ $(function() {
       }
 
       this.closeModal();
-      this.updateTotals();
       this.setLocalStorage();
     },
 
@@ -199,13 +207,36 @@ $(function() {
       $modal.fadeOut(400);
     },
 
+    showTodosByDate: function(e) {
+      var $e = $(e.currentTarget);
+      var date = $e.children().eq(0).text();
+      var total = $e.children().eq(1).text();
+      var context = { date: date, total: total };
+      var isCompleted = !!$e.parents().filter('#completed').length;
+
+      $nav.find('.active').removeClass('active');
+      $e.addClass('active');
+      this.renderTodosFor(isCompleted, date, context);
+    },
+
+    renderTodosFor: function(isCompleted, date, context) {
+      $h2.html(templates.heading(context));
+
+      if (isCompleted) {
+        $todoList.html(templates.todos({todos: this.getCompletedTodosByDate(date) }));
+      } else {
+        $todoList.html(templates.todos({todos: this.getTodosByDate(date) }));
+      }
+    },
+
     renderTodos: function() {
       $allTodos.html(templates.allTodos(this.getMonthlyTodoObject(this.todos)));
       $completedTodos.html(templates.completedTodos(this.getMonthlyTodoObject(this.completedTodos())));
       $todoList.html(templates.todos({ todos: this.todos }));
+      this.setDefaultMenuItem();
     },
 
-    setActiveClass: function() {
+    setDefaultMenuItem: function() {
       $('#todos-heading').click();
     },
 
@@ -229,19 +260,18 @@ $(function() {
       $todoList.on('click', '.todo', this.showModal.bind(this));
       $form.on('submit', this.save.bind(this));
       $('button').on('click', this.markTodoComplete.bind(this));
-      $nav.on('click', 'li', this.toggleMenuItem.bind(this));
+      $nav.on('click', 'li', this.showTodosByDate.bind(this));
     },
 
     init: function () {
       this.lastId = this.loadLastId();
       this.todos = this.loadTodos();
       this.bind();
-      this.updateTotals();
       this.renderTodos();
-      this.setActiveClass();
+      this.setDefaultMenuItem();
       return this;
     }
   };
 
-  todoApp = Object.create(TodoApp).init();
+  Object.create(TodoApp).init();
 });
