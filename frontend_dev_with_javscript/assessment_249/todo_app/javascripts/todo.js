@@ -52,6 +52,12 @@ $(function() {
 
     result.dueDate = formatDueDate(result);
 
+    if (result.dueDate === 'No Due Date') {
+      result.dateObject = new Date(0);
+    } else {
+      result.dateObject = new Date(result.day + '/' + result.month + '/' + result.year);
+    }
+
     return result;
   }
 
@@ -59,6 +65,18 @@ $(function() {
     return array.filter(function(el) {
       return el === element;
     }).length;
+  }
+
+  function sortTodosByDate(todos) {
+    todos.sort(function(a, b) {
+      if (a.dateObject > b.dateObject) {
+        return 1;
+      } else if (a.dateObject < b.dateObject) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 
   var TodoApp = {
@@ -96,6 +114,8 @@ $(function() {
 
     getMonthlyTodoObject: function(todos) {
       var result = {};
+      sortTodosByDate(todos);
+
       var dates = todos.map(function(todo) {
         return todo.dueDate;
       });
@@ -126,8 +146,8 @@ $(function() {
       var index = this.todos.indexOf(todo);
       this.todos.splice(index, 1);
 
-      this.renderTodos();
       this.setLocalStorage();
+      this.renderAllTodos();
     },
 
     updateTodo: function() {
@@ -135,8 +155,6 @@ $(function() {
       var id = $form.data('id');
       var todo = this.get(id);
       $.extend(todo, formObj);
-      this.setLocalStorage();
-      this.renderTodos();
     },
 
     addTodo: function() {
@@ -146,10 +164,9 @@ $(function() {
       this.lastId++;
 
       this.todos.push(todo);
-      this.renderTodos();
     },
 
-    save: function(e) {
+    saveTodo: function(e) {
       e.preventDefault();
 
       if ($form.data('id')) {
@@ -160,6 +177,7 @@ $(function() {
 
       this.closeModal();
       this.setLocalStorage();
+      this.renderAllTodos();
     },
 
     markTodoComplete: function(e) {
@@ -170,7 +188,20 @@ $(function() {
 
       this.closeModal();
       this.setLocalStorage();
-      this.renderTodos();
+      this.renderAllTodos();
+    },
+
+    toggleTodoComplete: function(e) {
+      if (e.target.nodeName !== 'LI') {
+        return ;
+      }
+
+      var $e = $(e.target);
+      var id = $e.find('.todo').data('id');
+      var todo = this.get(id);
+      todo.completed = !todo.completed;
+      this.setLocalStorage();
+      this.renderAllTodos();
     },
 
     fillForm: function(e) {
@@ -207,7 +238,7 @@ $(function() {
       $modal.fadeOut(400);
     },
 
-    showTodosByDate: function(e) {
+    renderTodosByDate: function(e) {
       var $e = $(e.currentTarget);
       var date = $e.children().eq(0).text();
       var total = $e.children().eq(1).text();
@@ -216,10 +247,10 @@ $(function() {
 
       $nav.find('.active').removeClass('active');
       $e.addClass('active');
-      this.renderTodosFor(isCompleted, date, context);
+      this.fillTemplatesFor(isCompleted, date, context);
     },
 
-    renderTodosFor: function(isCompleted, date, context) {
+    fillTemplatesFor: function(isCompleted, date, context) {
       $h2.html(templates.heading(context));
 
       if (isCompleted) {
@@ -229,7 +260,7 @@ $(function() {
       }
     },
 
-    renderTodos: function() {
+    renderAllTodos: function() {
       $allTodos.html(templates.allTodos(this.getMonthlyTodoObject(this.todos)));
       $completedTodos.html(templates.completedTodos(this.getMonthlyTodoObject(this.completedTodos())));
       $todoList.html(templates.todos({ todos: this.todos }));
@@ -258,20 +289,23 @@ $(function() {
       $('.modal-layer').on('click', this.closeModal.bind(this));
       $todoList.on('click', '.delete', this.deleteTodo.bind(this));
       $todoList.on('click', '.todo', this.showModal.bind(this));
-      $form.on('submit', this.save.bind(this));
+      $form.on('submit', this.saveTodo.bind(this));
       $('button').on('click', this.markTodoComplete.bind(this));
-      $nav.on('click', 'li', this.showTodosByDate.bind(this));
+      $nav.on('click', 'li', this.renderTodosByDate.bind(this));
+      $todoList.on('click', 'li', this.toggleTodoComplete.bind(this));
     },
 
     init: function () {
       this.lastId = this.loadLastId();
       this.todos = this.loadTodos();
       this.bind();
-      this.renderTodos();
+      this.renderAllTodos();
       this.setDefaultMenuItem();
       return this;
     }
   };
 
-  Object.create(TodoApp).init();
+  todoApp = Object.create(TodoApp).init();
 });
+
+// organize into IIFE and call ?

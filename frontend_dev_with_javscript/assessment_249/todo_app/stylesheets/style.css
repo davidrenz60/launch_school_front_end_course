@@ -23,7 +23,7 @@ span {
 }
 
 a {
-  cursor: default;
+  cursor: pointer;
   text-decoration: none;
   color: #060606;
 }
