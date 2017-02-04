@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Backbone Collection Exercises</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="javascripts/underscore.js"></script>
+    <script src="javascripts/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  </head>
+  <body>
+    <h1>Collections</h1>
+
+    <script id="users" type="text/template">
+      {{#each users}}
+      <article id="user_{{id}}">
+        <h1><a href="http://{{website}}">{{name}}</a></h1>
+        <h2><a href="mailto:{{email}}">{{email}}</a></h2>
+        <dl>
+          <dt>User name</dt>
+          <dd>{{username}}</dd>
+          <dt>Company</dt>
+          <dd>{{company.name}}</dd>
+        </dl>
+      </article>
+      {{/each}}
+  </script>
+
+    <script src="javascripts/app.js"></script>
+  </body>
+</html>
