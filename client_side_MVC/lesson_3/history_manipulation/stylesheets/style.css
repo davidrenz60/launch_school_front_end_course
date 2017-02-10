@@ -1,0 +1,66 @@
+body {
+  font: normal 14px Helvetica, Arial, sans-serif;
+  background: #282828;
+  margin: 0;
+  padding: 0;
+}
+
+header, main {
+  max-width: 960px;
+  margin: 0 auto 25px auto;
+  padding: 10px 20px;
+  background: #ffffff;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+header h1 {
+  display: inline-block;
+  margin: 0 20px 0 0;
+}
+
+a {
+  color: blue;
+}
+
+nav {
+  display: inline-block;
+  margin: 0;
+  font-size: 16px;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav li a.active {
+  color: #03cf25;
+}
+
+figure {
+  max-width: 662px;
+  margin: 0 auto;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 662px;
+  border: 1px solid #c0c0c0;
+  border-bottom: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+figcaption {
+  border: 1px solid #c0c0c0;
+  border-top: none;
+  padding: 10px;
+}
+
+article + article {
+  display: none;
+}
