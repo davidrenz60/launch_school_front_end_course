@@ -55,7 +55,6 @@ var weather = {
   },
 
   processData: function(json) {
-    console.log(json);
     return {
       location: json.name,
       temp: this.temp(json.main.temp),
@@ -74,6 +73,3 @@ function kelvinToFeren(k) {
 }
 
 navigator.geolocation.getCurrentPosition(map.build.bind(map));
-
-
-// <i class="owf owf-803"></i>
