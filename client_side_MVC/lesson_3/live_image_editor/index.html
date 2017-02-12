@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Live Image Editor</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <script src="javascripts/editor.js"></script>
+  </head>
+  <body>
+    <div>
+      <img src="images/sunset.jpg">
+      <canvas></canvas>
+    </div>
+    <div>
+      <dl>
+        <dt>
+          <label for="brightness">Brightness</label>
+        </dt>
+        <dd>
+          <input type="range" id="brightness" min="-50" max="50" step="1"><span>0%</span>
+        </dd>
+         <dt>
+          <label for="saturation">Saturation</label>
+        </dt>
+        <dd>
+          <input type="range" id="saturation" min="-100" max="100" step="1"><span>0%</span>
+        </dd>
+        <ul>
+          <li><a href="#" data-method="invert">Invert</a></li>
+          <li><a href="#" data-method="horizontal">Horizontal Flip</a></li>
+          <li><a href="#" data-method="vertical">Vertical Flip</a></li>
+        </ul>
+      </dl>
+    </div>
+  </body>
+</html>
