@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  ul#products
+    li
+      img(src="images/snes_actraiser.jpg")
+      h2 ActRaiser
+      dl
+        dt Console
+        dd
+          span(title="SNES" class="logo snes") SNES
+        dt Year
+        dd 1991
+        dt Genre
+        dd Strategy
+        dt UPC
+        dd 719631000036
+      a(href="#") Add to cart
