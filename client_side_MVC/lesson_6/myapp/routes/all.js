@@ -1,33 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var _ = require('underscore');
+var fs = require('fs');
+var path = require('path');
 
-module.exports = function(app) {
-  function setActiveNavTo(title) {
-    var activeItem = _(app.locals.links).findWhere({ active: true });
-    if (activeItem) {
-      activeItem.active = false;
-    }
-
-    _(app.locals.links).findWhere({ title: title }).active = true;
-  }
-
-  /* GET home page. */
-  router.get('/', function(req, res, next) {
-    res.render('index', {
-      title: 'Web Store',
-    });
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  var products = fs.readFileSync(path.resolve(path.dirname(__dirname), 'public/products.json'), 'utf8')
+  res.render('index', {
+    products: JSON.parse(products),
   });
+});
 
-   router.get('/about', function(req, res, next) {
-    var title = "About";
-
-    setActiveNavTo(title);
-
-    res.render('about', {
-      title: title,
-    });
-  });
-
-  return router;
-}
+module.exports = router
